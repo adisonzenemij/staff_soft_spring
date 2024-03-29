@@ -107,12 +107,21 @@ public class TgUserDataController {
         );
     }
 
-    @GetMapping(value = "/query/cdName/{cdName}")
-    public ResponseEntity<TgUserDataEntity> queryCdName(
-        @PathVariable String cdName
+    @GetMapping(value = "/query/cdEmail/{cdEmail}")
+    public ResponseEntity<TgUserDataEntity> queryCdEmail(
+        @PathVariable String cdEmail
     ) {
         return ResponseEntity.ok(
-            this.tgUserDataService.queryCdName(cdName)
+            this.tgUserDataService.queryCdEmail(cdEmail)
+        );
+    }
+
+    @GetMapping(value = "/query/cdLogin/{cdLogin}")
+    public ResponseEntity<TgUserDataEntity> queryCdLogin(
+        @PathVariable String cdLogin
+    ) {
+        return ResponseEntity.ok(
+            this.tgUserDataService.queryCdLogin(cdLogin)
         );
     }
 

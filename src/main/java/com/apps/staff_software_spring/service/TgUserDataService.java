@@ -62,8 +62,11 @@ public class TgUserDataService {
         if ("idRegister".equals(column)) {
             response = this.tgUserDataRepository.findAllByOrderByIdRegister();
         }
-        if ("cdName".equals(column)) {
-            response = this.tgUserDataRepository.findAllByOrderByCdName();
+        if ("cdEmail".equals(column)) {
+            response = this.tgUserDataRepository.findAllByOrderByCdEmail();
+        }
+        if ("cdLogin".equals(column)) {
+            response = this.tgUserDataRepository.findAllByOrderByCdLogin();
         }
         return response;
     }
@@ -73,8 +76,11 @@ public class TgUserDataService {
         if ("idRegister".equals(column) && data instanceof Integer) {
             response = this.tgUserDataRepository.findAllByIdRegister((Integer) data);
         }
-        if ("cdName".equals(column) && data instanceof String) {
-            response = this.tgUserDataRepository.findAllByCdNameIgnoreCase((String) data);
+        if ("cdEmail".equals(column) && data instanceof String) {
+            response = this.tgUserDataRepository.findAllByCdEmailIgnoreCase((String) data);
+        }
+        if ("cdLogin".equals(column) && data instanceof String) {
+            response = this.tgUserDataRepository.findAllByCdLoginIgnoreCase((String) data);
         }
         return response;
     }
@@ -105,8 +111,12 @@ public class TgUserDataService {
         return this.tgUserDataConjunct.findIdRegister(idRegister);
     }
 
-    public TgUserDataEntity queryCdName(String cdName) {
-        return this.tgUserDataQuery.findByCdName(cdName);
+    public TgUserDataEntity queryCdEmail(String cdEmail) {
+        return this.tgUserDataQuery.findByCdEmail(cdEmail);
+    }
+
+    public TgUserDataEntity queryCdLogin(String cdLogin) {
+        return this.tgUserDataQuery.findByCdLogin(cdLogin);
     }
 
     @SuppressWarnings("null")
