@@ -30,12 +30,6 @@ public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
     @Column(name = "id_register", nullable = true)
     private Integer idRegister;
 
-    @Column(name = "az_created_at", nullable = false, columnDefinition = "DATETIME")
-    private LocalDateTime azCreatedAt;
-
-    @Column(name = "az_update_at", nullable = false, columnDefinition = "DATETIME")
-    private LocalDateTime azUpdatedAt;
-
     @Column(name = "cd_name", nullable = false, length = 255, unique = false)
     private String cdName;
 
@@ -47,8 +41,6 @@ public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
     public String toString() {
         return "TgRoleDataEntity{" +
                 "idRegister=" + idRegister +
-                ", azCreatedAt=" + azCreatedAt +
-                ", azUpdatedAt=" + azUpdatedAt +
                 ", cdName='" + cdName + '\'' +
                 '}';
     }

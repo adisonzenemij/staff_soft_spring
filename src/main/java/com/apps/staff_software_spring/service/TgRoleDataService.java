@@ -71,7 +71,7 @@ public class TgRoleDataService {
 
     public List<TgRoleDataEntity> getToday() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRoleDataRepository.findAllByAzCreatedAtAfter(today);
+        return this.tgRoleDataRepository.findAllByazCreatedDateAfter(today);
     }
 
     public Page<TgRoleDataEntity> pageAll(int page, int elements) {

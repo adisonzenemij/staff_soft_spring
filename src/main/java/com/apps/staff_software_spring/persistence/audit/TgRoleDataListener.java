@@ -33,8 +33,6 @@ public class TgRoleDataListener {
     private TgRoleDataEntity cloneEntity(TgRoleDataEntity entity) {
         TgRoleDataEntity clone = new TgRoleDataEntity();
         clone.setIdRegister(entity.getIdRegister());
-        clone.setAzCreatedAt(entity.getAzCreatedAt());
-        clone.setAzUpdatedAt(entity.getAzUpdatedAt());
         clone.setCdName(entity.getCdName());
         return clone;
     }
