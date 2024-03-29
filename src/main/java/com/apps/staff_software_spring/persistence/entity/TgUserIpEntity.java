@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tg_role_data")
+@Table(name = "tg_user_ip")
 @EntityListeners({AuditingEntityListener.class})
 @Getter
 @Setter
@@ -52,6 +52,7 @@ public class TgUserIpEntity extends AuditoryEntity implements Serializable {
         return "TgUserIpEntity{" +
             "idRegister=" + idRegister +
             ", cdAddress='" + cdAddress + '\'' +
+            ", tgUserData='" + tgUserData + '\'' +
             '}';
     }
 }
