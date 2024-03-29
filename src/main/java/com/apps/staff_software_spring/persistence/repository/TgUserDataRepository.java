@@ -27,7 +27,7 @@ public interface TgUserDataRepository extends ListCrudRepository<TgUserDataEntit
     List<TgUserDataEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgUserDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atUpdatedDate);
+    List<TgUserDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
 
     // Limitar la busqueda de registros por cdName
     TgUserDataEntity findFirstByCdName(String cdName);

@@ -8,6 +8,10 @@ import com.apps.staff_software_spring.persistence.entity.TgUserDataEntity;
 
 public interface TgUserDataQuery extends ListCrudRepository<TgUserDataEntity, Integer> {
     // Obtener resultados buscando por la columna cdName
-    @Query(nativeQuery = false, value = "SELECT trd FROM TgUserDataEntity trd WHERE trd.cdName = :cd_name")
+    @Query(
+        nativeQuery = false,
+        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
+            "WHERE trd.cdName = :cd_name"
+    )
     TgUserDataEntity findByCdName(@Param("cd_name") String cdName);
 }
