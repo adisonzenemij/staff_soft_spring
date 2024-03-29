@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apps.staff_software_spring.persistence.entity.TgRoleDataEntity;
 import com.apps.staff_software_spring.service.TgRoleDataService;
 import com.apps.staff_software_spring.service.dto.TgRoleDataDto;
-import com.apps.staff_software_spring.util.RandomUtil;
 
 @RestController
 @RequestMapping(value = "/api/tgRoleData")
@@ -144,19 +142,6 @@ public class TgRoleDataController {
         }
 
         return ResponseEntity.ok(savedEntities);
-    }
-
-    @PostMapping(value = "/post/save/random/{count}")
-    public ResponseEntity<Void> saveRandom(@PathVariable int count) {
-        Random random = new Random();
-        for (int i = 0; i < count; i++) {
-            TgRoleDataEntity tgRoleDataEntity = new TgRoleDataEntity();
-            String randomName = RandomUtil.randomName(random);
-            tgRoleDataEntity.setCdName(randomName);
-            this.tgRoleDataService.save(tgRoleDataEntity);
-        }
-
-        return ResponseEntity.ok().build();
     }
 
     @PostMapping(value = "/post/save/register")
