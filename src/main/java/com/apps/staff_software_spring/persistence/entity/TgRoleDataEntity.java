@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TgRoleDataEntity extends AudiTableEntity implements Serializable {
+public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_register", nullable = true)

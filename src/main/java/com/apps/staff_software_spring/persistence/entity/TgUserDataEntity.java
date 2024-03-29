@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TgUserDataEntity extends AudiTableEntity {
+public class TgUserDataEntity extends AuditoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_register", nullable = false)
