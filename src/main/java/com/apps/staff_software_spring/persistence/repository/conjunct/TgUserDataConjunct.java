@@ -12,12 +12,21 @@ import com.apps.staff_software_spring.service.dto.TgUserDataDto;
 
 public interface TgUserDataConjunct extends ListCrudRepository<TgUserDataEntity, Integer> {
     // Obtener el conteo de registros de la tabla
-    @Query(nativeQuery = true, value = "SELECT COUNT(*) FROM tg_user_data")
+    @Query(
+        nativeQuery = true,
+        value = "SELECT COUNT(*) FROM tg_user_data"
+    )
     int countAll();
 
     // Obtener el conteo de registros de la tabla
-    @Query(nativeQuery = true, value = "SELECT * FROM tg_user_data WHERE id_register = :idRegister")
-    List<TgUserDataEntity> findIdRegister(@Param("idRegister") String idRegister);
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM tg_user_data" + " " +
+            "WHERE id_register = :idRegister"
+    )
+    List<TgUserDataEntity> findIdRegister(
+        @Param("idRegister") String idRegister
+    );
 
     @Query(
         nativeQuery = true,
