@@ -27,7 +27,7 @@ public interface TgRoleDataRepository extends ListCrudRepository<TgRoleDataEntit
     List<TgRoleDataEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgRoleDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atUpdatedDate);
+    List<TgRoleDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
 
     // Limitar la busqueda de registros por cdName
     TgRoleDataEntity findFirstByCdName(String cdName);
