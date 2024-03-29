@@ -24,10 +24,10 @@ public interface TgRoleDataRepository extends ListCrudRepository<TgRoleDataEntit
     List<TgRoleDataEntity> findAllByCdNameContainingIgnoreCase(String cdName);
 
     // Buscar por fecha de creacion antes
-    List<TgRoleDataEntity> findAllByazCreatedDateAfter(LocalDateTime azCreatedDate);
+    List<TgRoleDataEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgRoleDataEntity> findAllByazUpdatedDateAfter(LocalDateTime azUpdatedDate);
+    List<TgRoleDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atUpdatedDate);
 
     // Limitar la busqueda de registros por cdName
     TgRoleDataEntity findFirstByCdName(String cdName);
