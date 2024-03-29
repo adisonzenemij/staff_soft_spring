@@ -21,9 +21,12 @@ public interface TgRoleDataConjunct extends ListCrudRepository<TgRoleDataEntity,
     // Obtener el conteo de registros de la tabla
     @Query(
         nativeQuery = true,
-        value = "SELECT * FROM tg_role_data WHERE id_register = :idRegister"
+        value = "SELECT * FROM tg_role_data" + " " +
+            "WHERE id_register = :idRegister"
     )
-    List<TgRoleDataEntity> findIdRegister(@Param("idRegister") String idRegister);
+    List<TgRoleDataEntity> findIdRegister(
+        @Param("idRegister") String idRegister
+    );
 
     @Query(
         nativeQuery = true,
