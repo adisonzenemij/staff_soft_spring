@@ -7,6 +7,5 @@ import lombok.Data;
 @Data
 public class TgRoleDataDto {
     private int idRegister;
-    private LocalDateTime azUpdatedAt;
     private String cdName;
 }

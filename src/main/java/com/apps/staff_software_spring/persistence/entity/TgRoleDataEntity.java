@@ -36,7 +36,6 @@ public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
     //@OneToMany(mappedBy = "tgRoleData")
     //private List<TgUserDataEntity> tgUserData;
 
-
     @Override
     public String toString() {
         return "TgRoleDataEntity{" +

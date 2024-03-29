@@ -26,8 +26,7 @@ public interface TgRoleDataConjunct extends ListCrudRepository<TgRoleDataEntity,
     @Query(
         nativeQuery = true,
         value = "UPDATE tg_role_data" + " " +
-            "SET az_update_at = :#{#newDto.azUpdatedAt}," + " " +
-                "cd_name = :#{#newDto.cdName}" + " " +
+            "SET cd_name = :#{#newDto.cdName}" + " " +
             "WHERE id_register = :#{#newDto.idRegister}"
     )
     void updateDto(@Param("newDto") TgRoleDataDto newDto);
