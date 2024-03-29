@@ -1,6 +1,7 @@
 package com.apps.staff_software_spring.persistence.entity;
 
 import java.io.Serializable;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.apps.staff_software_spring.persistence.audit.TgRoleDataListener;
@@ -30,9 +31,6 @@ public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
 
     @Column(name = "cd_name", nullable = false, length = 255, unique = false)
     private String cdName;
-
-    //@OneToMany(mappedBy = "tgRoleData")
-    //private List<TgUserDataEntity> tgUserData;
 
     @Override
     public String toString() {
