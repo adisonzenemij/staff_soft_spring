@@ -35,8 +35,8 @@ public class TgRoleDataEntity extends AuditoryEntity implements Serializable {
     @Override
     public String toString() {
         return "TgRoleDataEntity{" +
-                "idRegister=" + idRegister +
-                ", cdName='" + cdName + '\'' +
-                '}';
+            "idRegister=" + idRegister +
+            ", cdName='" + cdName + '\'' +
+            '}';
     }
 }
