@@ -1,8 +1,6 @@
 package com.apps.staff_software_spring.persistence.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.apps.staff_software_spring.persistence.audit.TgRoleDataListener;
