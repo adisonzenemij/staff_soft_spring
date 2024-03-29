@@ -99,6 +99,7 @@ public class TgRoleDataService {
         return this.tgRoleDataQuery.findByCdName(cdName);
     }
 
+    @SuppressWarnings("null")
     public TgRoleDataEntity save(TgRoleDataEntity tgRoleDataEntity) {
         return this.tgRoleDataRepository.save(tgRoleDataEntity);
     }
@@ -112,6 +113,7 @@ public class TgRoleDataService {
         this.tgRoleDataRepository.deleteAll();
     }
 
+    @SuppressWarnings("null")
     public void deleteAllById(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgRoleDataRepository.deleteById(id);
