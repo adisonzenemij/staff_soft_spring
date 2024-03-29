@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apps.staff_software_spring.persistence.entity.TgUserDataEntity;
-import com.apps.staff_software_spring.persistence.entity.TgUserDataEntity;
 import com.apps.staff_software_spring.persistence.repository.TgUserDataRepository;
 import com.apps.staff_software_spring.persistence.repository.conjunct.TgUserDataConjunct;
 import com.apps.staff_software_spring.persistence.repository.pagesort.TgUserDataPageSort;
@@ -110,6 +109,7 @@ public class TgUserDataService {
         return this.tgUserDataQuery.findByCdName(cdName);
     }
 
+    @SuppressWarnings("null")
     public TgUserDataEntity save(TgUserDataEntity tgUserDataEntity) {
         return this.tgUserDataRepository.save(tgUserDataEntity);
     }
@@ -123,6 +123,7 @@ public class TgUserDataService {
         this.tgUserDataRepository.deleteAll();
     }
 
+    @SuppressWarnings("null")
     public void deleteAllById(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgUserDataRepository.deleteById(id);
