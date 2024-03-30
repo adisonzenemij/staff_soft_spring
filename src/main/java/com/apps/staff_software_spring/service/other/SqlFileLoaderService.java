@@ -23,10 +23,10 @@ public class SqlFileLoaderService {
     public void loadSqlFiles() {
         try {
             ClassPathResource[] resources = {
-                new ClassPathResource("sql/table/sy_authentication.sql"),
-                new ClassPathResource("sql/table/tg_role_data.sql"),
-                new ClassPathResource("sql/table/tg_user_data.sql"),
-                new ClassPathResource("sql/table/tg_user_ip.sql"),
+                new ClassPathResource("sql/insert/sy_authentication.sql"),
+                new ClassPathResource("sql/insert/tg_role_data.sql"),
+                new ClassPathResource("sql/insert/tg_user_data.sql"),
+                new ClassPathResource("sql/insert/tg_user_ip.sql"),
             };
 
             for (ClassPathResource resource : resources) {
