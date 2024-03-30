@@ -24,6 +24,7 @@ public class SqlFileLoaderService {
         try {
             ClassPathResource[] resources = {
                 new ClassPathResource("sql/insert/sy_authentication.sql"),
+                new ClassPathResource("sql/insert/tg_role_auth.sql"),
                 new ClassPathResource("sql/insert/tg_role_data.sql"),
                 new ClassPathResource("sql/insert/tg_user_data.sql"),
                 new ClassPathResource("sql/insert/tg_user_email.sql"),
