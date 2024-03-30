@@ -17,4 +17,7 @@ public class AuditoryEntity {
     @Column(name = "at_modified_date")
     @LastModifiedDate
     private LocalDateTime atModifiedDate;
+
+    @Column(name = "cd_description", nullable = true, length = 255, unique = false)
+    private String cdDescription;
 }
