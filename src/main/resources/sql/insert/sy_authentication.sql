@@ -1,4 +1,4 @@
-INSERT INTO `bd_staff_software_spring`.`sy_authentication` (`cd_name`) VALUES
-('Aplicacion'),
-('Windows Server'),
-('Google Chrome');
+INSERT INTO `bd_staff_software_spring`.`sy_authentication` (`at_created_date`, `cd_name`) VALUES
+(NOW(), 'Aplicacion'),
+(NOW(), 'Windows Server'),
+(NOW(), 'Google Chrome');
