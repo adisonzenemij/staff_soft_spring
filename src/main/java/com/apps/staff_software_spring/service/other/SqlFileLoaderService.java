@@ -19,7 +19,6 @@ public class SqlFileLoaderService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @SuppressWarnings({ "resource", "null" })
     @PostConstruct
     public void loadSqlFiles() {
         try {
@@ -31,16 +30,18 @@ public class SqlFileLoaderService {
             };
 
             for (ClassPathResource resource : resources) {
-                String sql = new BufferedReader(
-                    new InputStreamReader(
-                        resource.getInputStream()
-                    ))
-                    .lines()
-                    .collect(Collectors.joining("\n"));
-                jdbcTemplate.execute(sql);
+                if (!resource.exists()) {
+                    throw new IOException("File not found: " + resource.getPath());
+                }
+
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
+                    String sql = reader.lines().collect(Collectors.joining("\n"));
+                    jdbcTemplate.execute(sql);
+                }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error: Loading SQL Files", e);
+            throw new RuntimeException("Error loading SQL files", e);
         }
     }
+
 }

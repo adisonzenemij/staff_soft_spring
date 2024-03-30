@@ -1,3 +1,4 @@
-INSERT INTO sy_authentication (`cd_name`) VALUES ('Aplicacion');
-INSERT INTO sy_authentication (`cd_name`) VALUES ('Windows Server');
-INSERT INTO sy_authentication (`cd_name`) VALUES ('Google Chrome');
+INSERT INTO `bd_staff_software_spring`.`sy_authentication` (`cd_name`) VALUES
+('Aplicacion'),
+('Windows Server'),
+('Google Chrome');

@@ -37,7 +37,7 @@ public class TgUserIpEntity extends AuditoryEntity implements Serializable {
     //@ManyToOne(fecth = FetchType.LAZY)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
-        name = "tg_role_data",
+        name = "tg_user_data",
         referencedColumnName = "id_register",
         insertable = false,
         updatable = false
