@@ -5,8 +5,14 @@ DROP DATABASE IF EXISTS bd_staff_software_spring;
 CREATE DATABASE IF NOT EXISTS bd_staff_software_spring CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;;
 
 -- Eliminar la tabla si existe
-DROP TABLE IF EXISTS sy_authentication;
-DROP TABLE IF EXISTS tg_role_data;
-DROP TABLE IF EXISTS tg_user_data;
 DROP TABLE IF EXISTS tg_user_ip;
-DROP TABLE IF EXISTS tg_user_test;
+DROP TABLE IF EXISTS tg_user_email;
+DROP TABLE IF EXISTS tg_user_data;
+
+DROP TABLE IF EXISTS tg_role_permit;
+DROP TABLE IF EXISTS tg_role_action;
+DROP TABLE IF EXISTS tg_role_group;
+DROP TABLE IF EXISTS tg_role_data;
+DROP TABLE IF EXISTS tg_role_auth;
+
+DROP TABLE IF EXISTS sy_authentication;
