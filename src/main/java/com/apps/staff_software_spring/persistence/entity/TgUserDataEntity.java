@@ -54,6 +54,7 @@ public class TgUserDataEntity extends AuditoryEntity implements Serializable {
     //@OrderBy("id_register DESC")
     private TgRoleDataEntity tgRoleData;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
         return "TgUserDataEntity{" +
@@ -61,6 +62,7 @@ public class TgUserDataEntity extends AuditoryEntity implements Serializable {
             ", cdEmail='" + cdEmail + '\'' +
             ", cdLogin='" + cdLogin + '\'' +
             ", cdPassword='" + cdPassword + '\'' +
+            ", tgRoleData='" + tgRoleData + '\'' +
             '}';
     }
 }

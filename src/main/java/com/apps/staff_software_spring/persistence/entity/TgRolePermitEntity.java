@@ -70,6 +70,7 @@ public class TgRolePermitEntity extends AuditoryEntity implements Serializable {
     //@OrderBy("id_register DESC")
     private TgRoleDataEntity tgRoleData;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
         return "TgRolePermitEntity{" +

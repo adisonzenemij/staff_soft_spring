@@ -32,11 +32,12 @@ public class SyAuthenticationEntity extends AuditoryEntity implements Serializab
     @Column(name = "cd_name", nullable = false, length = 255, unique = false)
     private String cdName;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
         return "SyAuthenticationEntity{" +
-                "idRegister=" + idRegister +
-                ", cdName='" + cdName + '\'' +
-                '}';
+            "idRegister=" + idRegister +
+            ", cdName='" + cdName + '\'' +
+            '}';
     }
 }

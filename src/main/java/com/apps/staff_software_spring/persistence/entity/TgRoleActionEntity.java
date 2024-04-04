@@ -50,12 +50,14 @@ public class TgRoleActionEntity extends AuditoryEntity implements Serializable {
     //@OrderBy("id_register DESC")
     private TgRoleGroupEntity tgRoleGroup;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
         return "TgRoleActionEntity{" +
             "idRegister=" + idRegister +
-            ", cdAcronym='" + cdAcronym + '\'' +
             ", cdName='" + cdName + '\'' +
+            ", cdAcronym='" + cdAcronym + '\'' +
+            ", tgRoleGroup='" + tgRoleGroup + '\'' +
             '}';
     }
 }

@@ -47,6 +47,7 @@ public class TgUserIpEntity extends AuditoryEntity implements Serializable {
     //@OrderBy("id_register DESC")
     private TgUserDataEntity tgUserData;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
         return "TgUserIpEntity{" +

@@ -30,9 +30,10 @@ public class TgRoleAuthEntity extends AuditoryEntity implements Serializable {
     @Column(name = "cd_name", nullable = false, length = 255, unique = false)
     private String cdName;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
-        return "TgUserIpEntity{" +
+        return "TgRoleAuthEntity{" +
             "idRegister=" + idRegister +
             ", cdName='" + cdName + '\'' +
             '}';

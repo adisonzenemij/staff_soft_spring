@@ -23,17 +23,44 @@ public class SqlFileLoaderService {
     public void loadSqlFiles() {
         try {
             ClassPathResource[] resources = {
-                new ClassPathResource("sql/insert/sy_authentication.sql"),
+                // Ejecutar eliminaciones en orden descendente
+                new ClassPathResource("sql/delete/technology/tg_user_ip.sql"),
+                new ClassPathResource("sql/delete/technology/tg_user_email.sql"),
+                new ClassPathResource("sql/delete/technology/tg_user_data.sql"),
+                new ClassPathResource("sql/delete/technology/tg_role_permit.sql"),
+                new ClassPathResource("sql/delete/technology/tg_role_action.sql"),
+                new ClassPathResource("sql/delete/technology/tg_role_func.sql"),
+                new ClassPathResource("sql/delete/technology/tg_role_data.sql"),
+                new ClassPathResource("sql/delete/technology/tg_role_group.sql"),
+                // Ejecutar eliminaciones en orden descendente
+                new ClassPathResource("sql/delete/system/sy_authentication.sql"),
 
-                new ClassPathResource("sql/insert/tg_role_auth.sql"),
-                new ClassPathResource("sql/insert/tg_role_data.sql"),
-                new ClassPathResource("sql/insert/tg_role_group.sql"),
-                new ClassPathResource("sql/insert/tg_role_action.sql"),
-                //new ClassPathResource("sql/insert/tg_role_permit.sql"),
+                
+                // Ejecutar alteraciones en orden descendente
+                new ClassPathResource("sql/alter/technology/tg_user_ip.sql"),
+                new ClassPathResource("sql/alter/technology/tg_user_email.sql"),
+                new ClassPathResource("sql/alter/technology/tg_user_data.sql"),
+                new ClassPathResource("sql/alter/technology/tg_role_permit.sql"),
+                new ClassPathResource("sql/alter/technology/tg_role_action.sql"),
+                new ClassPathResource("sql/alter/technology/tg_role_func.sql"),
+                new ClassPathResource("sql/alter/technology/tg_role_data.sql"),
+                new ClassPathResource("sql/alter/technology/tg_role_group.sql"),
+                // Ejecutar alteraciones en orden descendente
+                new ClassPathResource("sql/alter/system/sy_authentication.sql"),
 
-                new ClassPathResource("sql/insert/tg_user_data.sql"),
-                new ClassPathResource("sql/insert/tg_user_email.sql"),
-                new ClassPathResource("sql/insert/tg_user_ip.sql"),
+
+                // Ejecutar inserciones en orden ascendente
+                new ClassPathResource("sql/insert/system/sy_authentication.sql"),
+                // Ejecutar inserciones en orden ascendente
+                new ClassPathResource("sql/insert/technology/tg_role_auth.sql"),
+                new ClassPathResource("sql/insert/technology/tg_role_group.sql"),
+                new ClassPathResource("sql/insert/technology/tg_role_data.sql"),
+                new ClassPathResource("sql/insert/technology/tg_role_func.sql"),
+                new ClassPathResource("sql/insert/technology/tg_role_action.sql"),
+                new ClassPathResource("sql/insert/technology/tg_role_permit.sql"),
+                new ClassPathResource("sql/insert/technology/tg_user_data.sql"),
+                new ClassPathResource("sql/insert/technology/tg_user_email.sql"),
+                new ClassPathResource("sql/insert/technology/tg_user_ip.sql"),
             };
 
             for (ClassPathResource resource : resources) {

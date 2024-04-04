@@ -27,17 +27,14 @@ public class TgRoleGroupEntity extends AuditoryEntity implements Serializable {
     @Column(name = "id_register", nullable = true)
     private Integer idRegister;
 
-    @Column(name = "cd_acronym", nullable = false, length = 255, unique = false)
-    private String cdAcronym;
-
     @Column(name = "cd_name", nullable = false, length = 255, unique = false)
     private String cdName;
 
+    // Imprimir Atributos
     @Override
     public String toString() {
-        return "TgUserIpEntity{" +
+        return "TgRoleGroupEntity{" +
             "idRegister=" + idRegister +
-            ", cdAcronym='" + cdAcronym + '\'' +
             ", cdName='" + cdName + '\'' +
             '}';
     }
