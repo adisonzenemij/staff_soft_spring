@@ -11,11 +11,13 @@ public interface SyAuthenticationRepository extends ListCrudRepository<SyAuthent
     // Ordenar por la columna idRegister
     List<SyAuthenticationEntity> findAllByOrderByIdRegister();
 
-    // Ordenar por la columna cdName
-    List<SyAuthenticationEntity> findAllByOrderByCdName();
-
     // Buscar por la columna idRegister
     List<SyAuthenticationEntity> findAllByIdRegister(Integer idRegister);
+
+
+
+    // Ordenar por la columna cdName
+    List<SyAuthenticationEntity> findAllByOrderByCdName();
 
     // Buscar por la columna cdName
     List<SyAuthenticationEntity> findAllByCdNameIgnoreCase(String cdName);
@@ -23,12 +25,14 @@ public interface SyAuthenticationRepository extends ListCrudRepository<SyAuthent
     // Buscar por la columna cdName ignorando mayusculas y minusculas
     List<SyAuthenticationEntity> findAllByCdNameContainingIgnoreCase(String cdName);
 
+    // Limitar la busqueda de registros por cdName
+    SyAuthenticationEntity findFirstByCdName(String cdName);
+
+    
+
     // Buscar por fecha de creacion antes
     List<SyAuthenticationEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
 
     // Buscar por fecha de creacion antes
     List<SyAuthenticationEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
-
-    // Limitar la busqueda de registros por cdName
-    SyAuthenticationEntity findFirstByCdName(String cdName);
 }

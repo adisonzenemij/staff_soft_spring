@@ -11,36 +11,50 @@ public interface TgUserDataRepository extends ListCrudRepository<TgUserDataEntit
     // Ordenar por la columna idRegister
     List<TgUserDataEntity> findAllByOrderByIdRegister();
 
-    // Ordenar por la columna cdEmail
-    List<TgUserDataEntity> findAllByOrderByCdEmail();
-
-    // Ordenar por la columna cdLogin
-    List<TgUserDataEntity> findAllByOrderByCdLogin();
-
     // Buscar por la columna idRegister
     List<TgUserDataEntity> findAllByIdRegister(Integer idRegister);
+
+
+
+    // Ordenar por la columna cdEmail
+    List<TgUserDataEntity> findAllByOrderByCdEmail();
 
     // Buscar por la columna cdEmail
     List<TgUserDataEntity> findAllByCdEmailIgnoreCase(String cdEmail);
 
-    // Buscar por la columna cdLogin
-    List<TgUserDataEntity> findAllByCdLoginIgnoreCase(String cdLogin);
-
     // Buscar por la columna cdEmail ignorando mayusculas y minusculas
     List<TgUserDataEntity> findAllByCdEmailContainingIgnoreCase(String cdEmail);
 
+    // Limitar la busqueda de registros por cdEmail
+    TgUserDataEntity findFirstByCdEmail(String cdEmail);
+
+
+
+    // Ordenar por la columna cdLogin
+    List<TgUserDataEntity> findAllByOrderByCdLogin();
+
+    // Buscar por la columna cdLogin
+    List<TgUserDataEntity> findAllByCdLoginIgnoreCase(String cdLogin);
+
     // Buscar por la columna cdLogin ignorando mayusculas y minusculas
     List<TgUserDataEntity> findAllByCdLoginContainingIgnoreCase(String cdLogin);
+
+    // Limitar la busqueda de registros por cdLogin
+    TgUserDataEntity findFirstByCdLogin(String cdLogin);
+
+
+
+    // Ordenar por la columna tgRoleData
+    List<TgUserDataEntity> findAllByOrderByTgRoleData();
+
+    // Buscar por la columna tgRoleData
+    List<TgUserDataEntity> findAllByTgRoleData(Integer tgRoleData);
+
+
 
     // Buscar por fecha de creacion antes
     List<TgUserDataEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
 
     // Buscar por fecha de creacion antes
     List<TgUserDataEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
-
-    // Limitar la busqueda de registros por cdEmail
-    TgUserDataEntity findFirstByCdEmail(String cdEmail);
-
-    // Limitar la busqueda de registros por cdLogin
-    TgUserDataEntity findFirstByCdLogin(String cdLogin);
 }
