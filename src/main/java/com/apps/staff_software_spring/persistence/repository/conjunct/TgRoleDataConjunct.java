@@ -32,11 +32,13 @@ public interface TgRoleDataConjunct extends ListCrudRepository<TgRoleDataEntity,
         nativeQuery = true,
         value = "UPDATE tg_role_data" + " " +
             "SET cd_name = :cdName" + " " +
+                ", tg_role_group = :tgRoleGroup" + " " +
             "WHERE id_register = :idRegister"
     )
     void updateData(
         @Param("idRegister") int idRegister,
-        @Param("cdName") String cdName
+        @Param("cdName") String cdName,
+        @Param("tgRoleGroup") int tgRoleGroup
     );
 
     @Modifying
@@ -44,6 +46,7 @@ public interface TgRoleDataConjunct extends ListCrudRepository<TgRoleDataEntity,
         nativeQuery = true,
         value = "UPDATE tg_role_data" + " " +
             "SET cd_name = :#{#newDto.cdName}" + " " +
+                ", tg_role_group = :#{#newDto.tgRoleGroup}" + " " +
             "WHERE id_register = :#{#newDto.idRegister}"
     )
     void updateDto(@Param("newDto") TgRoleDataDto newDto);

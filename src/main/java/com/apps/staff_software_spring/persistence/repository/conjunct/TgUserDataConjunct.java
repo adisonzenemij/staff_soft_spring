@@ -31,25 +31,28 @@ public interface TgUserDataConjunct extends ListCrudRepository<TgUserDataEntity,
     @Query(
         nativeQuery = true,
         value = "UPDATE tg_user_data" + " " +
-            "SET cd_email = :cdEmail," + " " +
-                "cd_login = :cdLogin," + " " +
-                "cd_password = :cdPassword" + " " +
+            "SET cd_email = :cdEmail" + " " +
+                ", cd_login = :cdLogin" + " " +
+                ", cd_password = :cdPassword" + " " +
+                ", tg_role_data = :tgRoleData" + " " +
             "WHERE id_register = :idRegister"
     )
     void updateData(
         @Param("idRegister") int idRegister,
         @Param("cdEmail") String cdEmail,
         @Param("cdLogin") String cdLogin,
-        @Param("cdPassword") String cdPassword
+        @Param("cdPassword") String cdPassword,
+        @Param("tgRoleData") String tgRoleData
     );
 
     @Modifying
     @Query(
         nativeQuery = true,
         value = "UPDATE tg_user_data" + " " +
-            "SET cd_email = :#{#newDto.cdEmail}," + " " +
-                "cd_login = :#{#newDto.cdLogin}," + " " +
-                "cd_password = :#{#newDto.cdPassword}" + " " +
+            "SET cd_email = :#{#newDto.cdEmail}" + " " +
+                ", cd_login = :#{#newDto.cdLogin}" + " " +
+                ", cd_password = :#{#newDto.cdPassword}" + " " +
+                ", tg_role_data = :#{#newDto.tgRoleData}" + " " +
             "WHERE id_register = :#{#newDto.idRegister}"
     )
     void updateDto(@Param("newDto") TgUserDataDto newDto);
