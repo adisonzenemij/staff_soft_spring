@@ -14,4 +14,12 @@ public interface TgRoleDataQuery extends ListCrudRepository<TgRoleDataEntity, In
             "WHERE trd.cdName = :cd_name"
     )
     TgRoleDataEntity findByCdName(@Param("cd_name") String cdName);
+    
+    // Obtener resultados buscando por la columna tgRoleGroup
+    @Query(
+        nativeQuery = false,
+        value = "SELECT trd FROM TgRoleDataEntity trd" + " " +
+            "WHERE trd.tgRoleGroup = :tg_role_group"
+    )
+    TgRoleDataEntity findByTgRoleGroup(@Param("tg_role_group") Integer tgRoleGroup);
 }

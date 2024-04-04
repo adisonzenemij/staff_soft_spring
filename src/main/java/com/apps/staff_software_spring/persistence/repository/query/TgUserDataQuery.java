@@ -22,4 +22,20 @@ public interface TgUserDataQuery extends ListCrudRepository<TgUserDataEntity, In
             "WHERE trd.cdLogin = :cd_login"
     )
     TgUserDataEntity findByCdLogin(@Param("cd_login") String cdLogin);
+    
+    // Obtener resultados buscando por la columna cdPassword
+    @Query(
+        nativeQuery = false,
+        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
+            "WHERE trd.cdPassword = :cd_password"
+    )
+    TgUserDataEntity findByCdPassword(@Param("cd_password") String cdPassword);
+    
+    // Obtener resultados buscando por la columna tgRoleData
+    @Query(
+        nativeQuery = false,
+        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
+            "WHERE trd.tgRoleData = :tg_role_data"
+    )
+    TgUserDataEntity findByTgRoleData(@Param("tg_role_data") Integer tgRoleData);
 }

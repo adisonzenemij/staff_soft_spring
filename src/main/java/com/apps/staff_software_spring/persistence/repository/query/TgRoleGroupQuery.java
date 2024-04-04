@@ -1,5 +1,17 @@
 package com.apps.staff_software_spring.persistence.repository.query;
 
-public interface TgRoleGroupQuery {
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.data.repository.query.Param;
 
+import com.apps.staff_software_spring.persistence.entity.TgRoleGroupEntity;
+
+public interface TgRoleGroupQuery extends ListCrudRepository<TgRoleGroupEntity, Integer> {
+    // Obtener resultados buscando por la columna cdName
+    @Query(
+        nativeQuery = false,
+        value = "SELECT trd FROM TgRoleGroupEntity trd" + " " +
+            "WHERE trd.cdName = :cd_name"
+    )
+    TgRoleGroupEntity findByCdName(@Param("cd_name") String cdName);
 }
