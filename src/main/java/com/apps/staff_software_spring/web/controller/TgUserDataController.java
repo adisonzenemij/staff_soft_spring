@@ -1,4 +1,4 @@
-package com.apps.staff_software_spring.controller;
+package com.apps.staff_software_spring.web.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;

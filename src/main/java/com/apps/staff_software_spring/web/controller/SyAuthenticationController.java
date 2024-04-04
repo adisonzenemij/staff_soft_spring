@@ -1,4 +1,4 @@
-package com.apps.staff_software_spring.controller;
+package com.apps.staff_software_spring.web.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,123 +19,123 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apps.staff_software_spring.persistence.entity.TgRoleDataEntity;
-import com.apps.staff_software_spring.service.TgRoleDataService;
-import com.apps.staff_software_spring.service.dto.TgRoleDataDto;
+import com.apps.staff_software_spring.persistence.entity.SyAuthenticationEntity;
+import com.apps.staff_software_spring.service.SyAuthenticationService;
+import com.apps.staff_software_spring.service.dto.SyAuthenticationDto;
 
 @RestController
-@RequestMapping(value = "/api/tgRoleData")
-public class TgRoleDataController {
-    private final TgRoleDataService tgRoleDataService;
-    //private final TgRoleDataEntity tgRoleDataEntity;
+@RequestMapping(value = "/api/syAuthentication")
+public class SyAuthenticationController {
+    private final SyAuthenticationService syAuthenticationService;
+    //private final SyAuthenticationEntity syAuthenticationEntity;
     
     @Autowired
-    public TgRoleDataController(
-        //TgRoleDataEntity tgRoleDataEntity,
-        TgRoleDataService tgRoleDataService
+    public SyAuthenticationController(
+        //SyAuthenticationEntity syAuthenticationEntity,
+        SyAuthenticationService syAuthenticationService
     ) {
-        //this.tgRoleDataEntity = tgRoleDataEntity;
-        this.tgRoleDataService = tgRoleDataService;
+        //this.syAuthenticationEntity = syAuthenticationEntity;
+        this.syAuthenticationService = syAuthenticationService;
     }
 
     @GetMapping(value = "/get/all")
-    public ResponseEntity<List<TgRoleDataEntity>> getAll() {
+    public ResponseEntity<List<SyAuthenticationEntity>> getAll() {
         return ResponseEntity.ok(
-            this.tgRoleDataService.getAll()
+            this.syAuthenticationService.getAll()
         );
     }
 
     @GetMapping(value = "/get/byId/{idRegister}")
-    public ResponseEntity<TgRoleDataEntity> getById(
+    public ResponseEntity<SyAuthenticationEntity> getById(
         @PathVariable int idRegister
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.getById(idRegister)
+            this.syAuthenticationService.getById(idRegister)
         );
     }
 
     @GetMapping(value = "/get/orderBy/{column}")
-    public ResponseEntity<List<TgRoleDataEntity>> getOrderByColumn(
+    public ResponseEntity<List<SyAuthenticationEntity>> getOrderByColumn(
         @PathVariable String column
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.getOrderByColumn(column)
+            this.syAuthenticationService.getOrderByColumn(column)
         );
     }
 
     @GetMapping(value = "/get/search/data")
-    public ResponseEntity<List<TgRoleDataEntity>> getSearchData(
+    public ResponseEntity<List<SyAuthenticationEntity>> getSearchData(
         @RequestBody Map<String, String> searchData
     ) {
         String columnName = searchData.keySet().iterator().next();
         String columnValue = searchData.get(columnName);
 
         return ResponseEntity.ok(
-            this.tgRoleDataService.getSearchData(columnName, columnValue)
+            this.syAuthenticationService.getSearchData(columnName, columnValue)
         );
     }
 
     @GetMapping(value = "/get/today")
-    public ResponseEntity<List<TgRoleDataEntity>> getToday() {
+    public ResponseEntity<List<SyAuthenticationEntity>> getToday() {
         return ResponseEntity.ok(
-            this.tgRoleDataService.getToday()
+            this.syAuthenticationService.getToday()
         );
     }
 
     @GetMapping(value = "/page/all")
-    public ResponseEntity<Page<TgRoleDataEntity>> pageAll(
+    public ResponseEntity<Page<SyAuthenticationEntity>> pageAll(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int elements
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.pageAll(page, elements)
+            this.syAuthenticationService.pageAll(page, elements)
         );
     }
 
     @GetMapping(value = "/page/sort")
-    public ResponseEntity<Page<TgRoleDataEntity>> pageSortCol(
+    public ResponseEntity<Page<SyAuthenticationEntity>> pageSortCol(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int elements,
         @RequestParam(defaultValue = "idRegister") String sortBy,
         @RequestParam(defaultValue = "ASC") String sortDir
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.pageSortCol(
+            this.syAuthenticationService.pageSortCol(
                 page, elements, sortBy, sortDir
             )
         );
     }
 
     @GetMapping(value = "/nat/idRegister/{idRegister}")
-    public ResponseEntity<List<TgRoleDataEntity>> natIdRegister(
+    public ResponseEntity<List<SyAuthenticationEntity>> natIdRegister(
         @PathVariable String idRegister
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.natIdRegister(idRegister)
+            this.syAuthenticationService.natIdRegister(idRegister)
         );
     }
 
     @GetMapping(value = "/query/cdName/{cdName}")
-    public ResponseEntity<TgRoleDataEntity> queryCdName(
+    public ResponseEntity<SyAuthenticationEntity> queryCdName(
         @PathVariable String cdName
     ) {
         return ResponseEntity.ok(
-            this.tgRoleDataService.queryCdName(cdName)
+            this.syAuthenticationService.queryCdName(cdName)
         );
     }
 
     @PostMapping(value = "/post/save/multi")
-    public ResponseEntity<List<TgRoleDataEntity>> saveMulti(
-        @RequestBody List<TgRoleDataEntity> tgRoleDataEntities
+    public ResponseEntity<List<SyAuthenticationEntity>> saveMulti(
+        @RequestBody List<SyAuthenticationEntity> syAuthenticationEntities
     ) {
-        List<TgRoleDataEntity> savedEntities = new ArrayList<>();
-        for (TgRoleDataEntity entity : tgRoleDataEntities) {
+        List<SyAuthenticationEntity> savedEntities = new ArrayList<>();
+        for (SyAuthenticationEntity entity : syAuthenticationEntities) {
             if (entity.getIdRegister() == null ||
-                !this.tgRoleDataService.existsById(
+                !this.syAuthenticationService.existsById(
                     entity.getIdRegister()
                 )
             ) {
-                savedEntities.add(this.tgRoleDataService.save(entity));
+                savedEntities.add(this.syAuthenticationService.save(entity));
             } else {
                 return ResponseEntity.badRequest().build();
             }
@@ -145,16 +145,16 @@ public class TgRoleDataController {
     }
 
     @PostMapping(value = "/post/save/register")
-    public ResponseEntity<TgRoleDataEntity> saveRegister(
-        @RequestBody TgRoleDataEntity tgRoleDataEntity
+    public ResponseEntity<SyAuthenticationEntity> saveRegister(
+        @RequestBody SyAuthenticationEntity syAuthenticationEntity
     ) {
-        if (tgRoleDataEntity.getIdRegister() == null ||
-            !this.tgRoleDataService.existsById(
-                tgRoleDataEntity.getIdRegister()
+        if (syAuthenticationEntity.getIdRegister() == null ||
+            !this.syAuthenticationService.existsById(
+                syAuthenticationEntity.getIdRegister()
             )
         ) {
             return ResponseEntity.ok(
-                this.tgRoleDataService.save(tgRoleDataEntity)
+                this.syAuthenticationService.save(syAuthenticationEntity)
             );
         }
 
@@ -162,16 +162,16 @@ public class TgRoleDataController {
     }
 
     @PutMapping(value = "/update/register")
-    public ResponseEntity<TgRoleDataEntity> updateRegister(
-        @RequestBody TgRoleDataEntity tgRoleDataEntity
+    public ResponseEntity<SyAuthenticationEntity> updateRegister(
+        @RequestBody SyAuthenticationEntity syAuthenticationEntity
     ) {
-        if (tgRoleDataEntity.getIdRegister() != null ||
-            this.tgRoleDataService.existsById(
-                tgRoleDataEntity.getIdRegister()
+        if (syAuthenticationEntity.getIdRegister() != null ||
+            this.syAuthenticationService.existsById(
+                syAuthenticationEntity.getIdRegister()
             )
         ) {
             return ResponseEntity.ok(
-                this.tgRoleDataService.save(tgRoleDataEntity)
+                this.syAuthenticationService.save(syAuthenticationEntity)
             );
         }
 
@@ -180,13 +180,13 @@ public class TgRoleDataController {
 
     @PutMapping(value = "/update/dto")
     public ResponseEntity<Void> updateDto(
-        @RequestBody TgRoleDataDto tgRoleDataDto
+        @RequestBody SyAuthenticationDto syAuthenticationDto
     ) {
-        if (this.tgRoleDataService.existsById(
-                tgRoleDataDto.getIdRegister()
+        if (this.syAuthenticationService.existsById(
+                syAuthenticationDto.getIdRegister()
             )
         ) {
-            this.tgRoleDataService.updateDto(tgRoleDataDto);
+            this.syAuthenticationService.updateDto(syAuthenticationDto);
             return ResponseEntity.ok().build();
         }
 
@@ -195,19 +195,19 @@ public class TgRoleDataController {
 
     @DeleteMapping(value = "/delete/all")
     public ResponseEntity<Void> deleteAll() {
-        this.tgRoleDataService.deleteAll();
+        this.syAuthenticationService.deleteAll();
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(value = "/delete/allById/{ids}")
     public ResponseEntity<Void> deleteAllById(@PathVariable List<Integer> ids) {
         for (Integer id : ids) {
-            if (!this.tgRoleDataService.existsById(id)) {
+            if (!this.syAuthenticationService.existsById(id)) {
                 return ResponseEntity.badRequest().build();
             }
         }
 
-        this.tgRoleDataService.deleteAllById(ids);
+        this.syAuthenticationService.deleteAllById(ids);
         return ResponseEntity.ok().build();
     }
 
@@ -216,8 +216,8 @@ public class TgRoleDataController {
         Map<String, String> response = new HashMap<>();
         try {
             var message = "Registro Inexistente";
-            if (this.tgRoleDataService.existsById(idRegister)) {
-                this.tgRoleDataService.deleteById(idRegister);
+            if (this.syAuthenticationService.existsById(idRegister)) {
+                this.syAuthenticationService.deleteById(idRegister);
                 message = "Registro Eliminado";
             }
             response.put("message", message);
