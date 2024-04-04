@@ -55,8 +55,8 @@ public class TgRoleActionEntity extends AuditoryEntity implements Serializable {
     public String toString() {
         return "TgRoleActionEntity{" +
             "idRegister=" + idRegister +
-            ", cdName='" + cdName + '\'' +
             ", cdAcronym='" + cdAcronym + '\'' +
+            ", cdName='" + cdName + '\'' +
             ", tgRoleFunc='" + tgRoleFunc + '\'' +
             '}';
     }

@@ -41,6 +41,7 @@ public class TgRoleDataListener {
         TgRoleDataEntity clone = new TgRoleDataEntity();
         clone.setIdRegister(entity.getIdRegister());
         clone.setCdName(entity.getCdName());
+        clone.setTgRoleGroup(entity.getTgRoleGroup());
         return clone;
     }
 }
