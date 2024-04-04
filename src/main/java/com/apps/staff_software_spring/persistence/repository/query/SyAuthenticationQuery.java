@@ -10,8 +10,8 @@ public interface SyAuthenticationQuery extends ListCrudRepository<SyAuthenticati
     // Obtener resultados buscando por la columna cdName
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM SyAuthenticationEntity trd" + " " +
-            "WHERE trd.cdName = :cd_name"
+        value = "SELECT tbcd FROM SyAuthenticationEntity tbcd" + " " +
+            "WHERE tbcd.cdName = :cd_name"
     )
     SyAuthenticationEntity findByCdName(@Param("cd_name") String cdName);
 }

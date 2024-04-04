@@ -10,32 +10,32 @@ public interface TgUserDataQuery extends ListCrudRepository<TgUserDataEntity, In
     // Obtener resultados buscando por la columna cdEmail
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
-            "WHERE trd.cdEmail = :cd_email"
+        value = "SELECT tbcd FROM TgUserDataEntity tbcd" + " " +
+            "WHERE tbcd.cdEmail = :cd_email"
     )
     TgUserDataEntity findByCdEmail(@Param("cd_email") String cdEmail);
     
     // Obtener resultados buscando por la columna cdLogin
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
-            "WHERE trd.cdLogin = :cd_login"
+        value = "SELECT tbcd FROM TgUserDataEntity tbcd" + " " +
+            "WHERE tbcd.cdLogin = :cd_login"
     )
     TgUserDataEntity findByCdLogin(@Param("cd_login") String cdLogin);
     
     // Obtener resultados buscando por la columna cdPassword
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
-            "WHERE trd.cdPassword = :cd_password"
+        value = "SELECT tbcd FROM TgUserDataEntity tbcd" + " " +
+            "WHERE tbcd.cdPassword = :cd_password"
     )
     TgUserDataEntity findByCdPassword(@Param("cd_password") String cdPassword);
     
     // Obtener resultados buscando por la columna tgRoleData
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserDataEntity trd" + " " +
-            "WHERE trd.tgRoleData = :tg_role_data"
+        value = "SELECT tbcd FROM TgUserDataEntity tbcd" + " " +
+            "WHERE tbcd.tgRoleData = :tg_role_data"
     )
     TgUserDataEntity findByTgRoleData(@Param("tg_role_data") Integer tgRoleData);
 }

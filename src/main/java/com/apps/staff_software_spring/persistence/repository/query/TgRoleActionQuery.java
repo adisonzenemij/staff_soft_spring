@@ -10,24 +10,24 @@ public interface TgRoleActionQuery extends ListCrudRepository<TgRoleActionEntity
     // Obtener resultados buscando por la columna cdAcronym
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRoleActionEntity trd" + " " +
-            "WHERE trd.cdAcronym = :cd_acronym"
+        value = "SELECT tbcd FROM TgRoleActionEntity tbcd" + " " +
+            "WHERE tbcd.cdAcronym = :cd_acronym"
     )
     TgRoleActionEntity findByCdAcronym(@Param("cd_acronym") String cdAcronym);
     
     // Obtener resultados buscando por la columna cdName
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRoleActionEntity trd" + " " +
-            "WHERE trd.cdName = :cd_name"
+        value = "SELECT tbcd FROM TgRoleActionEntity tbcd" + " " +
+            "WHERE tbcd.cdName = :cd_name"
     )
     TgRoleActionEntity findByCdName(@Param("cd_name") String cdName);
     
     // Obtener resultados buscando por la columna tgRoleFunc
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRoleActionEntity trd" + " " +
-            "WHERE trd.tgRoleFunc = :tg_role_func"
+        value = "SELECT tbcd FROM TgRoleActionEntity tbcd" + " " +
+            "WHERE tbcd.tgRoleFunc = :tg_role_func"
     )
     TgRoleActionEntity findByTgRoleFunc(@Param("tg_role_func") Integer tgRoleFunc);
 }

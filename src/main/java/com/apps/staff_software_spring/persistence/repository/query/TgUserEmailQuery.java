@@ -10,16 +10,16 @@ public interface TgUserEmailQuery extends ListCrudRepository<TgUserEmailEntity, 
     // Obtener resultados buscando por la columna cdExtra
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserEmailEntity trd" + " " +
-            "WHERE trd.cdExtra = :cd_extra"
+        value = "SELECT tbcd FROM TgUserEmailEntity tbcd" + " " +
+            "WHERE tbcd.cdExtra = :cd_extra"
     )
     TgUserEmailEntity findByCdExtra(@Param("cd_extra") String cdExtra);
     
     // Obtener resultados buscando por la columna tgUserData
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserEmailEntity trd" + " " +
-            "WHERE trd.tgUserData = :tg_user_data"
+        value = "SELECT tbcd FROM TgUserEmailEntity tbcd" + " " +
+            "WHERE tbcd.tgUserData = :tg_user_data"
     )
     TgUserEmailEntity findByTgUserData(@Param("tg_user_data") Integer tgUserData);
 }

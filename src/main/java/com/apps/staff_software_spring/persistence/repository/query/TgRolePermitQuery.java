@@ -10,24 +10,24 @@ public interface TgRolePermitQuery extends ListCrudRepository<TgRolePermitEntity
     // Obtener resultados buscando por la columna tgRoleAction
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRolePermitEntity trd" + " " +
-            "WHERE trd.tgRoleAction = :tg_role_action"
+        value = "SELECT tbcd FROM TgRolePermitEntity tbcd" + " " +
+            "WHERE tbcd.tgRoleAction = :tg_role_action"
     )
     TgRolePermitEntity findByTgRoleAction(@Param("tg_role_action") Integer tgRoleAction);
     
     // Obtener resultados buscando por la columna tgRoleAuth
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRolePermitEntity trd" + " " +
-            "WHERE trd.tgRoleAuth = :tg_role_auth"
+        value = "SELECT tbcd FROM TgRolePermitEntity tbcd" + " " +
+            "WHERE tbcd.tgRoleAuth = :tg_role_auth"
     )
     TgRolePermitEntity findByTgRoleAuth(@Param("tg_role_auth") Integer tgRoleAuth);
     
     // Obtener resultados buscando por la columna tgRoleData
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgRolePermitEntity trd" + " " +
-            "WHERE trd.tgRoleData = :tg_role_data"
+        value = "SELECT tbcd FROM TgRolePermitEntity tbcd" + " " +
+            "WHERE tbcd.tgRoleData = :tg_role_data"
     )
     TgRolePermitEntity findByTgRoleData(@Param("tg_role_data") Integer tgRoleData);
 }

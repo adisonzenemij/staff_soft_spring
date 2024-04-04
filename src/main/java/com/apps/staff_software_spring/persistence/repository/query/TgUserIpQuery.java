@@ -10,16 +10,16 @@ public interface TgUserIpQuery extends ListCrudRepository<TgUserIpEntity, Intege
     // Obtener resultados buscando por la columna cdAddress
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserIpEntity trd" + " " +
-            "WHERE trd.cdAddress = :cd_address"
+        value = "SELECT tbcd FROM TgUserIpEntity tbcd" + " " +
+            "WHERE tbcd.cdAddress = :cd_address"
     )
     TgUserIpEntity findByCdAddress(@Param("cd_address") String cdAddress);
     
     // Obtener resultados buscando por la columna tgUserData
     @Query(
         nativeQuery = false,
-        value = "SELECT trd FROM TgUserIpEntity trd" + " " +
-            "WHERE trd.tgUserData = :tg_user_data"
+        value = "SELECT tbcd FROM TgUserIpEntity tbcd" + " " +
+            "WHERE tbcd.tgUserData = :tg_user_data"
     )
     TgUserIpEntity findByTgUserData(@Param("tg_user_data") Integer tgUserData);
 }
