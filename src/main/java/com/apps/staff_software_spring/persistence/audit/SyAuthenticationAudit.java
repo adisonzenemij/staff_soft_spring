@@ -10,8 +10,8 @@ import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import jakarta.persistence.PreRemove;
 
-public class SyAuthenticationListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SyAuthenticationListener.class);
+public class SyAuthenticationAudit {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SyAuthenticationAudit.class);
     private SyAuthenticationEntity currentValue;
 
     @PostLoad

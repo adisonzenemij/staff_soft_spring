@@ -10,8 +10,8 @@ import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import jakarta.persistence.PreRemove;
 
-public class TgUserDataListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TgUserDataListener.class);
+public class TgUserDataAudit {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TgUserDataAudit.class);
     private TgUserDataEntity currentValue;
 
     @PostLoad

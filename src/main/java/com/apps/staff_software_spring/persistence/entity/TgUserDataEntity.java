@@ -3,7 +3,7 @@ package com.apps.staff_software_spring.persistence.entity;
 import java.io.Serializable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.apps.staff_software_spring.persistence.audit.TgUserDataListener;
+import com.apps.staff_software_spring.persistence.audit.TgUserDataAudit;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +22,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tg_user_data")
-@EntityListeners({AuditingEntityListener.class, TgUserDataListener.class})
+@EntityListeners({AuditingEntityListener.class, TgUserDataAudit.class})
 @Getter
 @Setter
 @NoArgsConstructor

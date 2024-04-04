@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.apps.staff_software_spring.persistence.audit.TgRoleDataListener;
+import com.apps.staff_software_spring.persistence.audit.TgRoleDataAudit;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +23,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tg_role_data")
-@EntityListeners({AuditingEntityListener.class, TgRoleDataListener.class})
+@EntityListeners({AuditingEntityListener.class, TgRoleDataAudit.class})
 @Getter
 @Setter
 @NoArgsConstructor

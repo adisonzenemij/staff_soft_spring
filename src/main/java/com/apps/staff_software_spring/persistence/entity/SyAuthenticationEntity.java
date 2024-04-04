@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.apps.staff_software_spring.persistence.audit.SyAuthenticationListener;
+import com.apps.staff_software_spring.persistence.audit.SyAuthenticationAudit;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +19,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "sy_authentication")
-@EntityListeners({AuditingEntityListener.class, SyAuthenticationListener.class})
+@EntityListeners({AuditingEntityListener.class, SyAuthenticationAudit.class})
 @Getter
 @Setter
 @NoArgsConstructor

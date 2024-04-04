@@ -3,42 +3,42 @@ package com.apps.staff_software_spring.persistence.audit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.apps.staff_software_spring.persistence.entity.TgRoleAuthEntity;
+import com.apps.staff_software_spring.persistence.entity.TgRoleGroupEntity;
 
 import jakarta.persistence.PostLoad;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import jakarta.persistence.PreRemove;
 
-public class TgRoleAuthListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TgRoleAuthListener.class);
-    private TgRoleAuthEntity currentValue;
+public class TgRoleGroupAudit {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TgRoleGroupAudit.class);
+    private TgRoleGroupEntity currentValue;
 
     @PostLoad
-    public void postLoad(TgRoleAuthEntity tgRoleAuthEntity) {
+    public void postLoad(TgRoleGroupEntity tgRoleGroupEntity) {
         if (LOGGER.isInfoEnabled()) { LOGGER.info("POST LOAD"); }
-        this.currentValue = cloneEntity(tgRoleAuthEntity);
+        this.currentValue = cloneEntity(tgRoleGroupEntity);
     }
 
     @PostPersist
     @PostUpdate
-    public void onPostPersist(TgRoleAuthEntity tgRoleAuthEntity) {
+    public void onPostPersist(TgRoleGroupEntity tgRoleGroupEntity) {
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info("POST PERSIST OR UPDATE");
             LOGGER.info("OLD VALUE: {}", this.currentValue);
-            LOGGER.info("NEW VALUE: {}", tgRoleAuthEntity);
+            LOGGER.info("NEW VALUE: {}", tgRoleGroupEntity);
         }
     }
 
     @PreRemove
-    public void onPreDelete(TgRoleAuthEntity tgRoleAuthEntity) {
+    public void onPreDelete(TgRoleGroupEntity tgRoleGroupEntity) {
         if (LOGGER.isInfoEnabled()) {
-            LOGGER.info(tgRoleAuthEntity.toString());
+            LOGGER.info(tgRoleGroupEntity.toString());
         }
     }
 
-    private TgRoleAuthEntity cloneEntity(TgRoleAuthEntity entity) {
-        TgRoleAuthEntity clone = new TgRoleAuthEntity();
+    private TgRoleGroupEntity cloneEntity(TgRoleGroupEntity entity) {
+        TgRoleGroupEntity clone = new TgRoleGroupEntity();
         clone.setIdRegister(entity.getIdRegister());
         clone.setCdName(entity.getCdName());
         return clone;

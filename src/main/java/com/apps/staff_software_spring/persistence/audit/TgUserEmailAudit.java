@@ -10,8 +10,8 @@ import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import jakarta.persistence.PreRemove;
 
-public class TgUserEmailListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TgUserEmailListener.class);
+public class TgUserEmailAudit {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TgUserEmailAudit.class);
     private TgUserEmailEntity currentValue;
 
     @PostLoad
