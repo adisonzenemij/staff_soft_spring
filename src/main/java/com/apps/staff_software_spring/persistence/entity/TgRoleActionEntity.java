@@ -40,7 +40,7 @@ public class TgRoleActionEntity extends AuditoryEntity implements Serializable {
     //@ManyToOne(fecth = FetchType.LAZY)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
-        name = "tg_role_group",
+        name = "tg_role_func",
         referencedColumnName = "id_register",
         insertable = false,
         updatable = false
@@ -48,7 +48,7 @@ public class TgRoleActionEntity extends AuditoryEntity implements Serializable {
     //@JsonIgnore
     @OrderBy("id_register ASC")
     //@OrderBy("id_register DESC")
-    private TgRoleGroupEntity tgRoleGroup;
+    private TgRoleFuncEntity tgRoleFunc;
 
     // Imprimir Atributos
     @Override
@@ -57,7 +57,7 @@ public class TgRoleActionEntity extends AuditoryEntity implements Serializable {
             "idRegister=" + idRegister +
             ", cdName='" + cdName + '\'' +
             ", cdAcronym='" + cdAcronym + '\'' +
-            ", tgRoleGroup='" + tgRoleGroup + '\'' +
+            ", tgRoleFunc='" + tgRoleFunc + '\'' +
             '}';
     }
 }
