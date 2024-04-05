@@ -20,7 +20,7 @@ public interface TgRolePermitRepository extends ListCrudRepository<TgRolePermitE
     List<TgRolePermitEntity> findAllByOrderByTgRoleAction();
 
     // Buscar por la columna tgRoleAction
-    List<TgRolePermitEntity> findAllByTgRoleAction(Integer tgRoleAction);
+    List<TgRolePermitEntity> findAllByIdTgRoleAction(Integer tgRoleAction);
 
 
 
@@ -28,7 +28,7 @@ public interface TgRolePermitRepository extends ListCrudRepository<TgRolePermitE
     List<TgRolePermitEntity> findAllByOrderByTgRoleAuth();
 
     // Buscar por la columna tgRoleAuth
-    List<TgRolePermitEntity> findAllByTgRoleAuth(Integer tgRoleAuth);
+    List<TgRolePermitEntity> findAllByIdTgRoleAuth(Integer tgRoleAuth);
 
 
 
@@ -36,7 +36,7 @@ public interface TgRolePermitRepository extends ListCrudRepository<TgRolePermitE
     List<TgRolePermitEntity> findAllByOrderByTgRoleData();
 
     // Buscar por la columna tgRoleData
-    List<TgRolePermitEntity> findAllByTgRoleData(Integer tgRoleData);
+    List<TgRolePermitEntity> findAllByIdTgRoleData(Integer tgRoleData);
 
     
 

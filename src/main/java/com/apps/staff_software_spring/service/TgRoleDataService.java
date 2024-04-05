@@ -43,6 +43,16 @@ public class TgRoleDataService {
         return this.tgRoleDataRepository.findAll();
     }
     
+    public List<TgRoleDataEntity> getAllLazy() {
+        List<TgRoleDataEntity> tgRoleDataEntitys = this.tgRoleDataRepository.findAll();
+        tgRoleDataEntitys.forEach(
+            data -> System.out.println(
+                data.getTgRoleGroup().getCdName()
+            )
+        );
+        return tgRoleDataEntitys;
+    }
+    
     public TgRoleDataEntity getById(int idRegister) {
         return this.tgRoleDataRepository.findById(idRegister).orElse(null);
     }
@@ -55,6 +65,9 @@ public class TgRoleDataService {
         if ("cdName".equals(column)) {
             response = this.tgRoleDataRepository.findAllByOrderByCdName();
         }
+        if ("tgRoleGroup".equals(column)) {
+            response = this.tgRoleDataRepository.findAllByOrderByTgRoleGroup();
+        }
         return response;
     }
 
@@ -66,13 +79,23 @@ public class TgRoleDataService {
         if ("cdName".equals(column) && data instanceof String) {
             response = this.tgRoleDataRepository.findAllByCdNameIgnoreCase((String) data);
         }
+        if ("tgRoleGroup".equals(column) && data instanceof Integer) {
+            response = this.tgRoleDataRepository.findAllByTgRoleGroup((Integer) data);
+        }
         return response;
     }
 
-    public List<TgRoleDataEntity> getToday() {
+    public List<TgRoleDataEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
         return this.tgRoleDataRepository.findAllByAtCreatedDateAfter(today);
     }
+
+    public List<TgRoleDataEntity> getAtDateUpdate() {
+        LocalDateTime today = LocalDate.now().atTime(0,0);
+        return this.tgRoleDataRepository.findAllByAtModifiedDateAfter(today);
+    }
+
+
 
     public Page<TgRoleDataEntity> pageAll(int page, int elements) {
         Pageable pageRequest = PageRequest.of(page, elements);
@@ -87,6 +110,8 @@ public class TgRoleDataService {
         return this.tgRoleDataPageSort.findBy(pageRequest);
     }
 
+
+
     public int natCountAll() {
         return this.tgRoleDataConjunct.countAll();
     }
@@ -95,11 +120,18 @@ public class TgRoleDataService {
         return this.tgRoleDataConjunct.findIdRegister(idRegister);
     }
 
+
+
     public TgRoleDataEntity queryCdName(String cdName) {
         return this.tgRoleDataQuery.findByCdName(cdName);
     }
 
-    @SuppressWarnings("null")
+    public TgRoleDataEntity queryTgRoleGroup(Integer tgRoleGroup) {
+        return this.tgRoleDataQuery.findByTgRoleGroup(tgRoleGroup);
+    }
+
+
+
     public TgRoleDataEntity save(TgRoleDataEntity tgRoleDataEntity) {
         return this.tgRoleDataRepository.save(tgRoleDataEntity);
     }
@@ -109,11 +141,12 @@ public class TgRoleDataService {
         this.tgRoleDataConjunct.updateDto(tgRoleDataDto);
     }
 
+
+
     public void deleteAll() {
         this.tgRoleDataRepository.deleteAll();
     }
 
-    @SuppressWarnings("null")
     public void deleteAllById(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgRoleDataRepository.deleteById(id);
@@ -123,6 +156,8 @@ public class TgRoleDataService {
     public void deleteById(int idRegister) {
         this.tgRoleDataRepository.deleteById(idRegister);
     }
+
+
 
     public boolean existsById(int idRegister) {
         return this.tgRoleDataRepository.existsById(idRegister);

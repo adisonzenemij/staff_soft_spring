@@ -8,4 +8,5 @@ public class TgUserDataDto {
     private String cdEmail;
     private String cdLogin;
     private String cdPassword;
+    private Integer tgRoleData;
 }

@@ -1,5 +1,10 @@
 package com.apps.staff_software_spring.service.dto;
 
-public class TgRoleFuncDto {
+import lombok.Data;
 
+@Data
+public class TgRoleFuncDto {
+    private Integer idRegister;
+    private String cdAcronym;
+    private String cdName;
 }

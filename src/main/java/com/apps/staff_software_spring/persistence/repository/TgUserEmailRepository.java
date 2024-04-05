@@ -30,11 +30,11 @@ public interface TgUserEmailRepository extends ListCrudRepository<TgUserEmailEnt
 
 
 
-    // Ordenar por la columna tgRoleData
-    List<TgUserEmailEntity> findAllByOrderByTgRoleData();
+    // Ordenar por la columna tgUserData
+    List<TgUserEmailEntity> findAllByOrderByTgUserData();
 
-    // Buscar por la columna tgRoleData
-    List<TgUserEmailEntity> findAllByTgRoleData(Integer tgRoleData);
+    // Buscar por la columna tgUserData
+    List<TgUserEmailEntity> findAllByTgUserData(Integer tgUserData);
 
     
 

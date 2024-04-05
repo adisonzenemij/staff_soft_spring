@@ -1,5 +1,9 @@
 package com.apps.staff_software_spring.service.dto;
 
-public class TgRoleAuthDto {
+import lombok.Data;
 
+@Data
+public class TgRoleAuthDto {
+    private Integer idRegister;
+    private String cdName;
 }

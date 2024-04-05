@@ -44,6 +44,20 @@ public interface TgUserDataRepository extends ListCrudRepository<TgUserDataEntit
 
 
 
+    // Ordenar por la columna cdPassword
+    List<TgUserDataEntity> findAllByOrderByCdPassword();
+
+    // Buscar por la columna cdPassword
+    List<TgUserDataEntity> findAllByCdPasswordIgnoreCase(String cdPassword);
+
+    // Buscar por la columna cdPassword ignorando mayusculas y minusculas
+    List<TgUserDataEntity> findAllByCdPasswordContainingIgnoreCase(String cdPassword);
+
+    // Limitar la busqueda de registros por cdPassword
+    TgUserDataEntity findFirstByCdPassword(String cdPassword);
+
+
+
     // Ordenar por la columna tgRoleData
     List<TgUserDataEntity> findAllByOrderByTgRoleData();
 

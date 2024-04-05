@@ -69,10 +69,17 @@ public class SyAuthenticationService {
         return response;
     }
 
-    public List<SyAuthenticationEntity> getToday() {
+    public List<SyAuthenticationEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
         return this.syAuthenticationRepository.findAllByAtCreatedDateAfter(today);
     }
+
+    public List<SyAuthenticationEntity> getAtDateUpdate() {
+        LocalDateTime today = LocalDate.now().atTime(0,0);
+        return this.syAuthenticationRepository.findAllByAtModifiedDateAfter(today);
+    }
+
+
 
     public Page<SyAuthenticationEntity> pageAll(int page, int elements) {
         Pageable pageRequest = PageRequest.of(page, elements);
@@ -87,6 +94,8 @@ public class SyAuthenticationService {
         return this.syAuthenticationPageSort.findBy(pageRequest);
     }
 
+
+
     public int natCountAll() {
         return this.syAuthenticationConjunct.countAll();
     }
@@ -95,11 +104,14 @@ public class SyAuthenticationService {
         return this.syAuthenticationConjunct.findIdRegister(idRegister);
     }
 
+    
+
     public SyAuthenticationEntity queryCdName(String cdName) {
         return this.syAuthenticationQuery.findByCdName(cdName);
     }
 
-    @SuppressWarnings("null")
+
+
     public SyAuthenticationEntity save(SyAuthenticationEntity syAuthenticationEntity) {
         return this.syAuthenticationRepository.save(syAuthenticationEntity);
     }
@@ -109,11 +121,12 @@ public class SyAuthenticationService {
         this.syAuthenticationConjunct.updateDto(syAuthenticationDto);
     }
 
+
+
     public void deleteAll() {
         this.syAuthenticationRepository.deleteAll();
     }
 
-    @SuppressWarnings("null")
     public void deleteAllById(List<Integer> ids) {
         for (Integer id : ids) {
             this.syAuthenticationRepository.deleteById(id);
@@ -123,6 +136,8 @@ public class SyAuthenticationService {
     public void deleteById(int idRegister) {
         this.syAuthenticationRepository.deleteById(idRegister);
     }
+
+
 
     public boolean existsById(int idRegister) {
         return this.syAuthenticationRepository.existsById(idRegister);

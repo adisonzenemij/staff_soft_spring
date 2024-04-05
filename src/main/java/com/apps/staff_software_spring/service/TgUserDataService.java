@@ -68,6 +68,12 @@ public class TgUserDataService {
         if ("cdLogin".equals(column)) {
             response = this.tgUserDataRepository.findAllByOrderByCdLogin();
         }
+        if ("cdPassword".equals(column)) {
+            response = this.tgUserDataRepository.findAllByOrderByCdPassword();
+        }
+        if ("tgRoleData".equals(column)) {
+            response = this.tgUserDataRepository.findAllByOrderByTgRoleData();
+        }
         return response;
     }
 
@@ -82,13 +88,26 @@ public class TgUserDataService {
         if ("cdLogin".equals(column) && data instanceof String) {
             response = this.tgUserDataRepository.findAllByCdLoginIgnoreCase((String) data);
         }
+        if ("cdPassword".equals(column) && data instanceof String) {
+            response = this.tgUserDataRepository.findAllByCdPasswordIgnoreCase((String) data);
+        }
+        if ("tgRoleData".equals(column) && data instanceof Integer) {
+            response = this.tgUserDataRepository.findAllByTgRoleData((Integer) data);
+        }
         return response;
     }
 
-    public List<TgUserDataEntity> getToday() {
+    public List<TgUserDataEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
         return this.tgUserDataRepository.findAllByAtCreatedDateAfter(today);
     }
+
+    public List<TgUserDataEntity> getAtDateUpdate() {
+        LocalDateTime today = LocalDate.now().atTime(0,0);
+        return this.tgUserDataRepository.findAllByAtModifiedDateAfter(today);
+    }
+
+
 
     public Page<TgUserDataEntity> pageAll(int page, int elements) {
         Pageable pageRequest = PageRequest.of(page, elements);
@@ -103,6 +122,8 @@ public class TgUserDataService {
         return this.tgUserDataPageSort.findBy(pageRequest);
     }
 
+
+
     public int natCountAll() {
         return this.tgUserDataConjunct.countAll();
     }
@@ -110,6 +131,8 @@ public class TgUserDataService {
     public List<TgUserDataEntity> natIdRegister(String idRegister) {
         return this.tgUserDataConjunct.findIdRegister(idRegister);
     }
+
+
 
     public TgUserDataEntity queryCdEmail(String cdEmail) {
         return this.tgUserDataQuery.findByCdEmail(cdEmail);
@@ -119,7 +142,16 @@ public class TgUserDataService {
         return this.tgUserDataQuery.findByCdLogin(cdLogin);
     }
 
-    @SuppressWarnings("null")
+    public TgUserDataEntity queryCdPassword(String cdPassword) {
+        return this.tgUserDataQuery.findByCdPassword(cdPassword);
+    }
+
+    public TgUserDataEntity queryTgRoleData(Integer tgRoleData) {
+        return this.tgUserDataQuery.findByTgRoleData(tgRoleData);
+    }
+
+
+
     public TgUserDataEntity save(TgUserDataEntity tgUserDataEntity) {
         return this.tgUserDataRepository.save(tgUserDataEntity);
     }
@@ -129,11 +161,12 @@ public class TgUserDataService {
         this.tgUserDataConjunct.updateDto(tgUserDataDto);
     }
 
+
+
     public void deleteAll() {
         this.tgUserDataRepository.deleteAll();
     }
 
-    @SuppressWarnings("null")
     public void deleteAllById(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgUserDataRepository.deleteById(id);
@@ -143,6 +176,8 @@ public class TgUserDataService {
     public void deleteById(int idRegister) {
         this.tgUserDataRepository.deleteById(idRegister);
     }
+
+
 
     public boolean existsById(int idRegister) {
         return this.tgUserDataRepository.existsById(idRegister);

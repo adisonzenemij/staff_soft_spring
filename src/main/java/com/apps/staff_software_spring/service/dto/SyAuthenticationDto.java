@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SyAuthenticationDto {
-    private int idRegister;
+    private Integer idRegister;
     private String cdName;
 }

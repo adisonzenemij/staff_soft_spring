@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.data.repository.ListCrudRepository;
 
-import com.apps.staff_software_spring.persistence.entity.TgRoleActionEntity;
 import com.apps.staff_software_spring.persistence.entity.TgRoleDataEntity;
 
 public interface TgRoleDataRepository extends ListCrudRepository<TgRoleDataEntity, Integer> {
