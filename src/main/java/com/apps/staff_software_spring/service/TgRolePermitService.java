@@ -167,14 +167,14 @@ public class TgRolePermitService {
         this.tgRolePermitRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgRolePermitRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgRolePermitRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgRolePermitRepository.deleteById(idRegister);
     }
 
 

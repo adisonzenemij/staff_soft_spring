@@ -147,14 +147,14 @@ public class TgUserEmailService {
         this.tgUserEmailRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgUserEmailRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgUserEmailRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgUserEmailRepository.deleteById(idRegister);
     }
 
 

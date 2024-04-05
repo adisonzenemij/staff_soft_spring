@@ -38,6 +38,7 @@ public class TgRoleDataController {
         this.tgRoleDataService = tgRoleDataService;
     }
 
+    // Obtener todos los registros
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<TgRoleDataEntity>> getAll() {
         return ResponseEntity.ok(
@@ -45,6 +46,7 @@ public class TgRoleDataController {
         );
     }
 
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/get/byId/{idRegister}")
     public ResponseEntity<TgRoleDataEntity> getById(
         @PathVariable int idRegister
@@ -54,6 +56,7 @@ public class TgRoleDataController {
         );
     }
 
+    // Path Varabile - Ordenar los registros por columna
     @GetMapping(value = "/get/orderBy/{column}")
     public ResponseEntity<List<TgRoleDataEntity>> getOrderByColumn(
         @PathVariable String column
@@ -63,6 +66,7 @@ public class TgRoleDataController {
         );
     }
 
+    // Request Body - Obtener registros segun busqueda
     @GetMapping(value = "/get/search/data")
     public ResponseEntity<List<TgRoleDataEntity>> getSearchData(
         @RequestBody Map<String, String> searchData
@@ -75,13 +79,25 @@ public class TgRoleDataController {
         );
     }
 
-    @GetMapping(value = "/get/today")
-    public ResponseEntity<List<TgRoleDataEntity>> getToday() {
+    // Obtener registros con fecha de creacion actual
+    @GetMapping(value = "/get/at/date/cr")
+    public ResponseEntity<List<TgRoleDataEntity>> getAtDateCreate() {
         return ResponseEntity.ok(
-            this.tgRoleDataService.getToday()
+            this.tgRoleDataService.getAtDateCreate()
         );
     }
 
+    // Obtener registros con fecha de actualizacion actual
+    @GetMapping(value = "/get/at/date/up")
+    public ResponseEntity<List<TgRoleDataEntity>> getAtDateUpdate() {
+        return ResponseEntity.ok(
+            this.tgRoleDataService.getAtDateUpdate()
+        );
+    }
+
+
+
+    // Obtener todos los registros con paginacion
     @GetMapping(value = "/page/all")
     public ResponseEntity<Page<TgRoleDataEntity>> pageAll(
         @RequestParam(defaultValue = "0") int page,
@@ -92,6 +108,7 @@ public class TgRoleDataController {
         );
     }
 
+    // Obtener todos los registros con paginacion y ordenacion
     @GetMapping(value = "/page/sort")
     public ResponseEntity<Page<TgRoleDataEntity>> pageSortCol(
         @RequestParam(defaultValue = "0") int page,
@@ -106,6 +123,9 @@ public class TgRoleDataController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/nat/idRegister/{idRegister}")
     public ResponseEntity<List<TgRoleDataEntity>> natIdRegister(
         @PathVariable String idRegister
@@ -115,6 +135,9 @@ public class TgRoleDataController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/query/cdName/{cdName}")
     public ResponseEntity<TgRoleDataEntity> queryCdName(
         @PathVariable String cdName
@@ -124,7 +147,20 @@ public class TgRoleDataController {
         );
     }
 
-    @PostMapping(value = "/post/save/multi")
+    // Path Variable - Obtener un registro especifico
+    @GetMapping(value = "/query/tgRoleGroup/{tgRoleGroup}")
+    public ResponseEntity<TgRoleDataEntity> queryTgRoleGroup(
+        @PathVariable Integer tgRoleGroup
+    ) {
+        return ResponseEntity.ok(
+            this.tgRoleDataService.queryTgRoleGroup(tgRoleGroup)
+        );
+    }
+
+
+
+    // Request Body - Almacenar varios registros
+    @PostMapping(value = "/insert/multi")
     public ResponseEntity<List<TgRoleDataEntity>> saveMulti(
         @RequestBody List<TgRoleDataEntity> tgRoleDataEntities
     ) {
@@ -144,10 +180,12 @@ public class TgRoleDataController {
         return ResponseEntity.ok(savedEntities);
     }
 
-    @PostMapping(value = "/post/save/register")
+    // Request Body - Almacenar un registro
+    @PostMapping(value = "/insert/register")
     public ResponseEntity<TgRoleDataEntity> saveRegister(
         @RequestBody TgRoleDataEntity tgRoleDataEntity
     ) {
+        // Si el id del registro es nulo o si el registro no existe
         if (tgRoleDataEntity.getIdRegister() == null ||
             !this.tgRoleDataService.existsById(
                 tgRoleDataEntity.getIdRegister()
@@ -157,14 +195,18 @@ public class TgRoleDataController {
                 this.tgRoleDataService.save(tgRoleDataEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/register")
     public ResponseEntity<TgRoleDataEntity> updateRegister(
         @RequestBody TgRoleDataEntity tgRoleDataEntity
     ) {
+        // Si el id del registro no es nulo o si el registro existe
         if (tgRoleDataEntity.getIdRegister() != null ||
             this.tgRoleDataService.existsById(
                 tgRoleDataEntity.getIdRegister()
@@ -174,10 +216,11 @@ public class TgRoleDataController {
                 this.tgRoleDataService.save(tgRoleDataEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/dto")
     public ResponseEntity<Void> updateDto(
         @RequestBody TgRoleDataDto tgRoleDataDto
@@ -193,24 +236,16 @@ public class TgRoleDataController {
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Eliminar todos los registros
     @DeleteMapping(value = "/delete/all")
     public ResponseEntity<Void> deleteAll() {
         this.tgRoleDataService.deleteAll();
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(value = "/delete/allById/{ids}")
-    public ResponseEntity<Void> deleteAllById(@PathVariable List<Integer> ids) {
-        for (Integer id : ids) {
-            if (!this.tgRoleDataService.existsById(id)) {
-                return ResponseEntity.badRequest().build();
-            }
-        }
-
-        this.tgRoleDataService.deleteAllById(ids);
-        return ResponseEntity.ok().build();
-    }
-
+    // Eliminar un registros especifico
     @DeleteMapping(value = "/delete/byId/{idRegister}")
     public ResponseEntity<?> deleteById(@PathVariable int idRegister) {
         Map<String, String> response = new HashMap<>();
@@ -226,5 +261,18 @@ public class TgRoleDataController {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+
+    // Eliminar varios registros especificos
+    @DeleteMapping(value = "/delete/byIdAll/{ids}")
+    public ResponseEntity<Void> deleteByIdAll(@PathVariable List<Integer> ids) {
+        for (Integer id : ids) {
+            if (!this.tgRoleDataService.existsById(id)) {
+                this.tgRoleDataService.deleteByIdAll(ids);
+                return ResponseEntity.badRequest().build();
+            }
+        }
+
+        return ResponseEntity.ok().build();
     }
 }

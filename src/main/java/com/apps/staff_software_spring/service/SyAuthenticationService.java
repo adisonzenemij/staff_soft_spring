@@ -104,7 +104,7 @@ public class SyAuthenticationService {
         return this.syAuthenticationConjunct.findIdRegister(idRegister);
     }
 
-    
+
 
     public SyAuthenticationEntity queryCdName(String cdName) {
         return this.syAuthenticationQuery.findByCdName(cdName);
@@ -127,14 +127,14 @@ public class SyAuthenticationService {
         this.syAuthenticationRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.syAuthenticationRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.syAuthenticationRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.syAuthenticationRepository.deleteById(idRegister);
     }
 
 

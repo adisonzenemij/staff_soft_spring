@@ -38,6 +38,7 @@ public class SyAuthenticationController {
         this.syAuthenticationService = syAuthenticationService;
     }
 
+    // Obtener todos los registros
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<SyAuthenticationEntity>> getAll() {
         return ResponseEntity.ok(
@@ -45,6 +46,7 @@ public class SyAuthenticationController {
         );
     }
 
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/get/byId/{idRegister}")
     public ResponseEntity<SyAuthenticationEntity> getById(
         @PathVariable int idRegister
@@ -54,6 +56,7 @@ public class SyAuthenticationController {
         );
     }
 
+    // Path Varabile - Ordenar los registros por columna
     @GetMapping(value = "/get/orderBy/{column}")
     public ResponseEntity<List<SyAuthenticationEntity>> getOrderByColumn(
         @PathVariable String column
@@ -63,6 +66,7 @@ public class SyAuthenticationController {
         );
     }
 
+    // Request Body - Obtener registros segun busqueda
     @GetMapping(value = "/get/search/data")
     public ResponseEntity<List<SyAuthenticationEntity>> getSearchData(
         @RequestBody Map<String, String> searchData
@@ -75,13 +79,25 @@ public class SyAuthenticationController {
         );
     }
 
-    @GetMapping(value = "/get/today")
-    public ResponseEntity<List<SyAuthenticationEntity>> getToday() {
+    // Obtener registros con fecha de creacion actual
+    @GetMapping(value = "/get/at/date/cr")
+    public ResponseEntity<List<SyAuthenticationEntity>> getAtDateCreate() {
         return ResponseEntity.ok(
-            this.syAuthenticationService.getToday()
+            this.syAuthenticationService.getAtDateCreate()
         );
     }
 
+    // Obtener registros con fecha de actualizacion actual
+    @GetMapping(value = "/get/at/date/up")
+    public ResponseEntity<List<SyAuthenticationEntity>> getAtDateUpdate() {
+        return ResponseEntity.ok(
+            this.syAuthenticationService.getAtDateUpdate()
+        );
+    }
+
+
+
+    // Obtener todos los registros con paginacion
     @GetMapping(value = "/page/all")
     public ResponseEntity<Page<SyAuthenticationEntity>> pageAll(
         @RequestParam(defaultValue = "0") int page,
@@ -92,6 +108,7 @@ public class SyAuthenticationController {
         );
     }
 
+    // Obtener todos los registros con paginacion y ordenacion
     @GetMapping(value = "/page/sort")
     public ResponseEntity<Page<SyAuthenticationEntity>> pageSortCol(
         @RequestParam(defaultValue = "0") int page,
@@ -106,6 +123,9 @@ public class SyAuthenticationController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/nat/idRegister/{idRegister}")
     public ResponseEntity<List<SyAuthenticationEntity>> natIdRegister(
         @PathVariable String idRegister
@@ -115,6 +135,9 @@ public class SyAuthenticationController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/query/cdName/{cdName}")
     public ResponseEntity<SyAuthenticationEntity> queryCdName(
         @PathVariable String cdName
@@ -124,7 +147,10 @@ public class SyAuthenticationController {
         );
     }
 
-    @PostMapping(value = "/post/save/multi")
+
+
+    // Request Body - Almacenar varios registros
+    @PostMapping(value = "/insert/multi")
     public ResponseEntity<List<SyAuthenticationEntity>> saveMulti(
         @RequestBody List<SyAuthenticationEntity> syAuthenticationEntities
     ) {
@@ -144,10 +170,12 @@ public class SyAuthenticationController {
         return ResponseEntity.ok(savedEntities);
     }
 
-    @PostMapping(value = "/post/save/register")
+    // Request Body - Almacenar un registro
+    @PostMapping(value = "/insert/register")
     public ResponseEntity<SyAuthenticationEntity> saveRegister(
         @RequestBody SyAuthenticationEntity syAuthenticationEntity
     ) {
+        // Si el id del registro es nulo o si el registro no existe
         if (syAuthenticationEntity.getIdRegister() == null ||
             !this.syAuthenticationService.existsById(
                 syAuthenticationEntity.getIdRegister()
@@ -157,14 +185,18 @@ public class SyAuthenticationController {
                 this.syAuthenticationService.save(syAuthenticationEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/register")
     public ResponseEntity<SyAuthenticationEntity> updateRegister(
         @RequestBody SyAuthenticationEntity syAuthenticationEntity
     ) {
+        // Si el id del registro no es nulo o si el registro existe
         if (syAuthenticationEntity.getIdRegister() != null ||
             this.syAuthenticationService.existsById(
                 syAuthenticationEntity.getIdRegister()
@@ -174,10 +206,11 @@ public class SyAuthenticationController {
                 this.syAuthenticationService.save(syAuthenticationEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/dto")
     public ResponseEntity<Void> updateDto(
         @RequestBody SyAuthenticationDto syAuthenticationDto
@@ -193,24 +226,16 @@ public class SyAuthenticationController {
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Eliminar todos los registros
     @DeleteMapping(value = "/delete/all")
     public ResponseEntity<Void> deleteAll() {
         this.syAuthenticationService.deleteAll();
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(value = "/delete/allById/{ids}")
-    public ResponseEntity<Void> deleteAllById(@PathVariable List<Integer> ids) {
-        for (Integer id : ids) {
-            if (!this.syAuthenticationService.existsById(id)) {
-                return ResponseEntity.badRequest().build();
-            }
-        }
-
-        this.syAuthenticationService.deleteAllById(ids);
-        return ResponseEntity.ok().build();
-    }
-
+    // Eliminar un registros especifico
     @DeleteMapping(value = "/delete/byId/{idRegister}")
     public ResponseEntity<?> deleteById(@PathVariable int idRegister) {
         Map<String, String> response = new HashMap<>();
@@ -226,5 +251,18 @@ public class SyAuthenticationController {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+
+    // Eliminar varios registros especificos
+    @DeleteMapping(value = "/delete/byIdAll/{ids}")
+    public ResponseEntity<Void> deleteByIdAll(@PathVariable List<Integer> ids) {
+        for (Integer id : ids) {
+            if (!this.syAuthenticationService.existsById(id)) {
+                this.syAuthenticationService.deleteByIdAll(ids);
+                return ResponseEntity.badRequest().build();
+            }
+        }
+
+        return ResponseEntity.ok().build();
     }
 }

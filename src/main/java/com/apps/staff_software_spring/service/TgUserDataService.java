@@ -167,14 +167,14 @@ public class TgUserDataService {
         this.tgUserDataRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgUserDataRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgUserDataRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgUserDataRepository.deleteById(idRegister);
     }
 
 

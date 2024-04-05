@@ -33,6 +33,7 @@ public class TgUserDataController {
         this.tgUserDataService = tgUserDataService;
     }
     
+    // Obtener todos los registros
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<TgUserDataEntity>> getAll() {
         return ResponseEntity.ok(
@@ -40,6 +41,7 @@ public class TgUserDataController {
         );
     }
 
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/get/byId/{idRegister}")
     public ResponseEntity<TgUserDataEntity> getById(
         @PathVariable int idRegister
@@ -49,6 +51,7 @@ public class TgUserDataController {
         );
     }
 
+    // Path Varabile - Ordenar los registros por columna
     @GetMapping(value = "/get/orderBy/{column}")
     public ResponseEntity<List<TgUserDataEntity>> getOrderByColumn(
         @PathVariable String column
@@ -58,6 +61,7 @@ public class TgUserDataController {
         );
     }
 
+    // Request Body - Obtener registros segun busqueda
     @GetMapping(value = "/get/search/data")
     public ResponseEntity<List<TgUserDataEntity>> getSearchData(
         @RequestBody Map<String, String> searchData
@@ -70,13 +74,25 @@ public class TgUserDataController {
         );
     }
 
-    @GetMapping(value = "/get/today")
-    public ResponseEntity<List<TgUserDataEntity>> getToday() {
+    // Obtener registros con fecha de creacion actual
+    @GetMapping(value = "/get/at/date/cr")
+    public ResponseEntity<List<TgUserDataEntity>> getAtDateCreate() {
         return ResponseEntity.ok(
-            this.tgUserDataService.getToday()
+            this.tgUserDataService.getAtDateCreate()
         );
     }
 
+    // Obtener registros con fecha de actualizacion actual
+    @GetMapping(value = "/get/at/date/up")
+    public ResponseEntity<List<TgUserDataEntity>> getAtDateUpdate() {
+        return ResponseEntity.ok(
+            this.tgUserDataService.getAtDateUpdate()
+        );
+    }
+
+
+
+    // Obtener todos los registros con paginacion
     @GetMapping(value = "/page/all")
     public ResponseEntity<Page<TgUserDataEntity>> pageAll(
         @RequestParam(defaultValue = "0") int page,
@@ -87,6 +103,7 @@ public class TgUserDataController {
         );
     }
 
+    // Obtener todos los registros con paginacion y ordenacion
     @GetMapping(value = "/page/sort")
     public ResponseEntity<Page<TgUserDataEntity>> pageSortCol(
         @RequestParam(defaultValue = "0") int page,
@@ -101,6 +118,9 @@ public class TgUserDataController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/nat/idRegister/{idRegister}")
     public ResponseEntity<List<TgUserDataEntity>> natIdRegister(
         @PathVariable String idRegister
@@ -110,6 +130,9 @@ public class TgUserDataController {
         );
     }
 
+
+
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/query/cdEmail/{cdEmail}")
     public ResponseEntity<TgUserDataEntity> queryCdEmail(
         @PathVariable String cdEmail
@@ -119,6 +142,7 @@ public class TgUserDataController {
         );
     }
 
+    // Path Variable - Obtener un registro especifico
     @GetMapping(value = "/query/cdLogin/{cdLogin}")
     public ResponseEntity<TgUserDataEntity> queryCdLogin(
         @PathVariable String cdLogin
@@ -128,7 +152,30 @@ public class TgUserDataController {
         );
     }
 
-    @PostMapping(value = "/post/save/multi")
+    // Path Variable - Obtener un registro especifico
+    @GetMapping(value = "/query/cdPassword/{cdPassword}")
+    public ResponseEntity<TgUserDataEntity> queryCdPassword(
+        @PathVariable String cdPassword
+    ) {
+        return ResponseEntity.ok(
+            this.tgUserDataService.queryCdPassword(cdPassword)
+        );
+    }
+
+    // Path Variable - Obtener un registro especifico
+    @GetMapping(value = "/query/tgRoleData/{tgRoleData}")
+    public ResponseEntity<TgUserDataEntity> queryTgRoleData(
+        @PathVariable Integer tgRoleData
+    ) {
+        return ResponseEntity.ok(
+            this.tgUserDataService.queryTgRoleData(tgRoleData)
+        );
+    }
+
+
+
+    // Request Body - Almacenar varios registros
+    @PostMapping(value = "/insert/multi")
     public ResponseEntity<List<TgUserDataEntity>> saveMulti(
         @RequestBody List<TgUserDataEntity> tgUserDataEntities
     ) {
@@ -148,10 +195,12 @@ public class TgUserDataController {
         return ResponseEntity.ok(savedEntities);
     }
 
-    @PostMapping(value = "/post/save/register")
+    // Request Body - Almacenar un registro
+    @PostMapping(value = "/insert/register")
     public ResponseEntity<TgUserDataEntity> saveRegister(
         @RequestBody TgUserDataEntity tgUserDataEntity
     ) {
+        // Si el id del registro es nulo o si el registro no existe
         if (tgUserDataEntity.getIdRegister() == null ||
             !this.tgUserDataService.existsById(
                 tgUserDataEntity.getIdRegister()
@@ -161,14 +210,18 @@ public class TgUserDataController {
                 this.tgUserDataService.save(tgUserDataEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/register")
     public ResponseEntity<TgUserDataEntity> updateRegister(
         @RequestBody TgUserDataEntity tgUserDataEntity
     ) {
+        // Si el id del registro no es nulo o si el registro existe
         if (tgUserDataEntity.getIdRegister() != null ||
             this.tgUserDataService.existsById(
                 tgUserDataEntity.getIdRegister()
@@ -178,10 +231,11 @@ public class TgUserDataController {
                 this.tgUserDataService.save(tgUserDataEntity)
             );
         }
-
+        // No se procese la peticion a construir
         return ResponseEntity.badRequest().build();
     }
 
+    // Request Body - Actualizar un registro
     @PutMapping(value = "/update/dto")
     public ResponseEntity<Void> updateDto(
         @RequestBody TgUserDataDto tgUserDataDto
@@ -197,24 +251,16 @@ public class TgUserDataController {
         return ResponseEntity.badRequest().build();
     }
 
+
+
+    // Eliminar todos los registros
     @DeleteMapping(value = "/delete/all")
     public ResponseEntity<Void> deleteAll() {
         this.tgUserDataService.deleteAll();
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(value = "/delete/allById/{ids}")
-    public ResponseEntity<Void> deleteAllById(@PathVariable List<Integer> ids) {
-        for (Integer id : ids) {
-            if (!this.tgUserDataService.existsById(id)) {
-                return ResponseEntity.badRequest().build();
-            }
-        }
-
-        this.tgUserDataService.deleteAllById(ids);
-        return ResponseEntity.ok().build();
-    }
-
+    // Eliminar un registros especifico
     @DeleteMapping(value = "/delete/byId/{idRegister}")
     public ResponseEntity<?> deleteById(@PathVariable int idRegister) {
         Map<String, String> response = new HashMap<>();
@@ -230,5 +276,18 @@ public class TgUserDataController {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+
+    // Eliminar varios registros especificos
+    @DeleteMapping(value = "/delete/byIdAll/{ids}")
+    public ResponseEntity<Void> deleteByIdAll(@PathVariable List<Integer> ids) {
+        for (Integer id : ids) {
+            if (!this.tgUserDataService.existsById(id)) {
+                this.tgUserDataService.deleteByIdAll(ids);
+                return ResponseEntity.badRequest().build();
+            }
+        }
+
+        return ResponseEntity.ok().build();
     }
 }

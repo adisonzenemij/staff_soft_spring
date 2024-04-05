@@ -104,7 +104,7 @@ public class TgRoleGroupService {
         return this.tgRoleGroupConjunct.findIdRegister(idRegister);
     }
 
-    
+
 
     public TgRoleGroupEntity queryCdName(String cdName) {
         return this.tgRoleGroupQuery.findByCdName(cdName);
@@ -127,14 +127,14 @@ public class TgRoleGroupService {
         this.tgRoleGroupRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgRoleGroupRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgRoleGroupRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgRoleGroupRepository.deleteById(idRegister);
     }
 
 

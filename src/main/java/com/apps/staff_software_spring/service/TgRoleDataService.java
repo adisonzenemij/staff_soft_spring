@@ -147,14 +147,14 @@ public class TgRoleDataService {
         this.tgRoleDataRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgRoleDataRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgRoleDataRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgRoleDataRepository.deleteById(idRegister);
     }
 
 

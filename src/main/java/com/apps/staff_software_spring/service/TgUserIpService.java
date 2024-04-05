@@ -147,14 +147,14 @@ public class TgUserIpService {
         this.tgUserIpRepository.deleteAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
+    public void deleteById(int idRegister) {
+        this.tgUserIpRepository.deleteById(idRegister);
+    }
+
+    public void deleteByIdAll(List<Integer> ids) {
         for (Integer id : ids) {
             this.tgUserIpRepository.deleteById(id);
         }
-    }
-
-    public void deleteById(int idRegister) {
-        this.tgUserIpRepository.deleteById(idRegister);
     }
 
 
