@@ -80,7 +80,7 @@ public class TgUserIpService {
             response = this.tgUserIpRepository.findAllByCdAddressIgnoreCase((String) data);
         }
         if ("tgUserData".equals(column) && data instanceof Integer) {
-            response = this.tgUserIpRepository.findAllByTgUserData((Integer) data);
+            response = this.tgUserIpRepository.findAllByTgUserData_IdRegister((Integer) data);
         }
         return response;
     }

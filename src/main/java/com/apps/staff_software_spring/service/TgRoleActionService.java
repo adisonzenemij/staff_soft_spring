@@ -76,7 +76,7 @@ public class TgRoleActionService {
             response = this.tgRoleActionRepository.findAllByCdNameIgnoreCase((String) data);
         }
         if ("tgRoleFunc".equals(column) && data instanceof Integer) {
-            response = this.tgRoleActionRepository.findAllByTgRoleFunc((Integer) data);
+            response = this.tgRoleActionRepository.findAllByTgRoleFunc_IdRegister((Integer) data);
         }
         return response;
     }

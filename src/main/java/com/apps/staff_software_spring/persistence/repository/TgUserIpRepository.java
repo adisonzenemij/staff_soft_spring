@@ -34,7 +34,7 @@ public interface TgUserIpRepository extends ListCrudRepository<TgUserIpEntity, I
     List<TgUserIpEntity> findAllByOrderByTgUserData();
 
     // Buscar por la columna tgUserData
-    List<TgUserIpEntity> findAllByTgUserData(Integer tgUserData);
+    List<TgUserIpEntity> findAllByTgUserData_IdRegister(Integer tgUserData);
 
     
 

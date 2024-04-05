@@ -80,7 +80,7 @@ public class TgRoleDataService {
             response = this.tgRoleDataRepository.findAllByCdNameIgnoreCase((String) data);
         }
         if ("tgRoleGroup".equals(column) && data instanceof Integer) {
-            response = this.tgRoleDataRepository.findAllByTgRoleGroup((Integer) data);
+            response = this.tgRoleDataRepository.findAllByTgRoleGroup_IdRegister((Integer) data);
         }
         return response;
     }

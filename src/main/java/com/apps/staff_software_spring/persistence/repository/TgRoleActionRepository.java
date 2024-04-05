@@ -48,7 +48,7 @@ public interface TgRoleActionRepository extends ListCrudRepository<TgRoleActionE
     List<TgRoleActionEntity> findAllByOrderByTgRoleFunc();
 
     // Buscar por la columna tgRoleFunc
-    List<TgRoleActionEntity> findAllByTgRoleFunc(Integer tgRoleFunc);
+    List<TgRoleActionEntity> findAllByTgRoleFunc_IdRegister(Integer tgRoleFunc);
 
     
 

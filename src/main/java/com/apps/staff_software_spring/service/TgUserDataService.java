@@ -92,7 +92,7 @@ public class TgUserDataService {
             response = this.tgUserDataRepository.findAllByCdPasswordIgnoreCase((String) data);
         }
         if ("tgRoleData".equals(column) && data instanceof Integer) {
-            response = this.tgUserDataRepository.findAllByTgRoleData((Integer) data);
+            response = this.tgUserDataRepository.findAllByTgRoleData_IdRegister((Integer) data);
         }
         return response;
     }

@@ -34,7 +34,7 @@ public interface TgUserEmailRepository extends ListCrudRepository<TgUserEmailEnt
     List<TgUserEmailEntity> findAllByOrderByTgUserData();
 
     // Buscar por la columna tgUserData
-    List<TgUserEmailEntity> findAllByTgUserData(Integer tgUserData);
+    List<TgUserEmailEntity> findAllByTgUserData_IdRegister(Integer tgUserData);
 
     
 

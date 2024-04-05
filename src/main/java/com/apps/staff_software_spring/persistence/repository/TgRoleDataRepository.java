@@ -34,7 +34,7 @@ public interface TgRoleDataRepository extends ListCrudRepository<TgRoleDataEntit
     List<TgRoleDataEntity> findAllByOrderByTgRoleGroup();
 
     // Buscar por la columna tgRoleGroup
-    List<TgRoleDataEntity> findAllByTgRoleGroup(Integer tgRoleGroup);
+    List<TgRoleDataEntity> findAllByTgRoleGroup_IdRegister(Integer tgRoleGroup);
 
 
 

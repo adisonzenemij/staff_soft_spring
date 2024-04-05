@@ -80,7 +80,7 @@ public class TgUserEmailService {
             response = this.tgUserEmailRepository.findAllByCdExtraIgnoreCase((String) data);
         }
         if ("tgUserData".equals(column) && data instanceof Integer) {
-            response = this.tgUserEmailRepository.findAllByTgUserData((Integer) data);
+            response = this.tgUserEmailRepository.findAllByTgUserData_IdRegister((Integer) data);
         }
         return response;
     }

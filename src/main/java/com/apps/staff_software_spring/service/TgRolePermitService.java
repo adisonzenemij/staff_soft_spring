@@ -90,13 +90,13 @@ public class TgRolePermitService {
             response = this.tgRolePermitRepository.findAllByIdRegister((Integer) data);
         }
         if ("tgRoleAction".equals(column) && data instanceof Integer) {
-            response = this.tgRolePermitRepository.findAllByIdTgRoleAction((Integer) data);
+            response = this.tgRolePermitRepository.findAllByTgRoleAction_IdRegister((Integer) data);
         }
         if ("tgRoleAuth".equals(column) && data instanceof Integer) {
-            response = this.tgRolePermitRepository.findAllByIdTgRoleAuth((Integer) data);
+            response = this.tgRolePermitRepository.findAllByTgRoleAuth_IdRegister((Integer) data);
         }
         if ("tgRoleData".equals(column) && data instanceof Integer) {
-            response = this.tgRolePermitRepository.findAllByIdTgRoleData((Integer) data);
+            response = this.tgRolePermitRepository.findAllByTgRoleData_IdRegister((Integer) data);
         }
         return response;
     }
