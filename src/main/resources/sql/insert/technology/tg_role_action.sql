@@ -1,5 +1,5 @@
 -- Insertar registros en la tabla
-INSERT INTO `bd_staff_software_spring`.`tg_role_action` (`at_created_date`, `cd_description`, `cd_acronym`, `cd_name`, `tg_role_func`) VALUES
+INSERT INTO `dv_staff_software_spring`.`tg_role_action` (`at_created_date`, `cd_description`, `cd_acronym`, `cd_name`, `tg_role_func`) VALUES
 (NOW(), 'Consultar informacion','read','Consultar','1'),
 (NOW(), 'Crear informacion','create','Crear','1'),
 (NOW(), 'Actualizar informacion','update','Actualizar','1'),

@@ -54,7 +54,6 @@ public class SqlFileLoaderService {
                 // Ejecutar inserciones en orden ascendente
                 new ClassPathResource("sql/insert/system/sy_authentication.sql"),
                 // Ejecutar inserciones en orden ascendente
-                new ClassPathResource("sql/insert/technology/tg_role_auth.sql"),
                 new ClassPathResource("sql/insert/technology/tg_role_group.sql"),
                 new ClassPathResource("sql/insert/technology/tg_role_data.sql"),
                 new ClassPathResource("sql/insert/technology/tg_role_func.sql"),
