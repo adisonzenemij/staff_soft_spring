@@ -33,7 +33,7 @@ public class SyGenericOptionEntity extends AuditoryEntity implements Serializabl
     // Imprimir Atributos
     @Override
     public String toString() {
-        return "SyAuthenticationEntity{" +
+        return "SyGenericOptionEntity{" +
             "idRegister=" + idRegister +
             ", cdValue='" + cdValue + '\'' +
             '}';
