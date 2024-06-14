@@ -46,5 +46,4 @@ public class TgGeoCountryEntity extends AuditoryEntity implements Serializable {
             ", cdValue='" + cdValue + '\'' +
             '}';
     }
-
 }
