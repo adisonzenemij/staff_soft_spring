@@ -33,7 +33,7 @@ public class SyGenericEliminateEntity extends AuditoryEntity implements Serializ
     // Imprimir Atributos
     @Override
     public String toString() {
-        return "SyAuthenticationEntity{" +
+        return "SyGenericEliminateEntity{" +
             "idRegister=" + idRegister +
             ", cdName='" + cdName + '\'' +
             '}';
