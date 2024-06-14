@@ -21,7 +21,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tg_user_ip")
-@EntityListeners({AuditingEntityListener.class})
+@EntityListeners({ AuditingEntityListener.class })
 @Getter
 @Setter
 @NoArgsConstructor
