@@ -12,22 +12,23 @@ import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class AuditoryEntity {
-    @Column(name = "at_created_date", nullable = true, unique = false)
+    // at: Auditoria - af: Otros Campos
+    @Column(name = "ad_created_date", nullable = true, unique = false)
     @CreatedDate
-    private LocalDateTime atCreatedDate;
+    private LocalDateTime adCreatedDate;
 
-    @Column(name = "at_modified_date", nullable = true, unique = false)
+    @Column(name = "ad_modified_date", nullable = true, unique = false)
     @LastModifiedDate
-    private LocalDateTime atModifiedDate;
+    private LocalDateTime adModifiedDate;
 
-    @Column(name = "cd_description", nullable = true, length = 255, unique = false)
-    private String cdDescription;
-
-    @Column(name = "at_created_by", nullable = true, length = 255, unique = false)
+    @Column(name = "ad_created_by", nullable = true, length = 255, unique = false)
     @CreatedBy
-    private String atCreatedBy;
+    private String adCreatedBy;
 
-    @Column(name = "at_modified_by", nullable = true, length = 255, unique = false)
+    @Column(name = "ad_modified_by", nullable = true, length = 255, unique = false)
     @LastModifiedBy
-    private String atModifiedBy;
+    private String adModifiedBy;
+
+    @Column(name = "af_description", nullable = true, length = 255, unique = false)
+    private String afDescription;
 }

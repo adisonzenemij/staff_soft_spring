@@ -19,7 +19,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "sy_authentication")
-@EntityListeners({AuditingEntityListener.class, SyAuthenticationAudit.class})
+@EntityListeners({ AuditingEntityListener.class, SyAuthenticationAudit.class })
 @Getter
 @Setter
 @NoArgsConstructor
