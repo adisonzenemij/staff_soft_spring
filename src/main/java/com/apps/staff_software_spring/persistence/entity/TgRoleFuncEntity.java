@@ -17,7 +17,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tg_role_func")
-@EntityListeners({AuditingEntityListener.class})
+@EntityListeners({ AuditingEntityListener.class })
 @Getter
 @Setter
 @NoArgsConstructor
