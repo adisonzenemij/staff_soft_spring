@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sy_generic_eliminate")
+@Table(name = "sy_information")
 @EntityListeners({ AuditingEntityListener.class })
 @Getter
 @Setter
 @NoArgsConstructor
-public class SyGenericEliminateEntity extends AuditoryEntity implements Serializable {
+public class SyInformationEntity extends AuditoryEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_register", nullable = false)
