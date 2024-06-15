@@ -38,20 +38,6 @@ public class TgDomainDataEntity extends AuditoryEntity implements Serializable {
     //@ManyToOne(fecth = FetchType.LAZY)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
-        name = "sy_generic_option",
-        referencedColumnName = "id_register",
-        insertable = false,
-        updatable = false
-    )
-    //@JsonIgnore
-    @OrderBy("id_register ASC")
-    //@OrderBy("id_register DESC")
-    private SyGenericOptionEntity syGenericOption;
-
-    //Many: Tb Principal - One: Tb Relacionada
-    //@ManyToOne(fecth = FetchType.LAZY)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(
         name = "tg_domain_ext",
         referencedColumnName = "id_register",
         insertable = false,
