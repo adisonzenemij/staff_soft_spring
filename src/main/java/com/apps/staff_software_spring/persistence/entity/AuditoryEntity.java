@@ -9,8 +9,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter
+@Setter
 public class AuditoryEntity {
     // ad: Auditoria - af: Otros Campos
     @Column(name = "ad_created_date", nullable = true, unique = false)
