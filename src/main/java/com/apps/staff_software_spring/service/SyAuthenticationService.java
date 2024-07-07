@@ -71,12 +71,12 @@ public class SyAuthenticationService {
 
     public List<SyAuthenticationEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.syAuthenticationRepository.findAllByAtCreatedDateAfter(today);
+        return this.syAuthenticationRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<SyAuthenticationEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.syAuthenticationRepository.findAllByAtModifiedDateAfter(today);
+        return this.syAuthenticationRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

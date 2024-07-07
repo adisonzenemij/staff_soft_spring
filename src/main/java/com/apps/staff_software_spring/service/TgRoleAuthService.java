@@ -71,12 +71,12 @@ public class TgRoleAuthService {
 
     public List<TgRoleAuthEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRoleAuthRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgRoleAuthRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgRoleAuthEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRoleAuthRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgRoleAuthRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

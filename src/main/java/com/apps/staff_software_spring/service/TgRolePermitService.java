@@ -103,12 +103,12 @@ public class TgRolePermitService {
 
     public List<TgRolePermitEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRolePermitRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgRolePermitRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgRolePermitEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRolePermitRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgRolePermitRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

@@ -83,12 +83,12 @@ public class TgRoleActionService {
 
     public List<TgRoleActionEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRoleActionRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgRoleActionRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgRoleActionEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgRoleActionRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgRoleActionRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

@@ -31,8 +31,8 @@ public interface TgRoleAuthRepository extends ListCrudRepository<TgRoleAuthEntit
     
 
     // Buscar por fecha de creacion antes
-    List<TgRoleAuthEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
+    List<TgRoleAuthEntity> findAllByAdCreatedDateAfter(LocalDateTime adCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgRoleAuthEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
+    List<TgRoleAuthEntity> findAllByAdModifiedDateAfter(LocalDateTime adModifiedDate);
 }

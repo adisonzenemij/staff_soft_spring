@@ -87,12 +87,12 @@ public class TgUserEmailService {
 
     public List<TgUserEmailEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserEmailRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgUserEmailRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgUserEmailEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserEmailRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgUserEmailRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

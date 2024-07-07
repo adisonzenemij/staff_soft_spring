@@ -87,12 +87,12 @@ public class TgUserIpService {
 
     public List<TgUserIpEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserIpRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgUserIpRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgUserIpEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserIpRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgUserIpRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

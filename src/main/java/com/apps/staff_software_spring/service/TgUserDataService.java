@@ -99,12 +99,12 @@ public class TgUserDataService {
 
     public List<TgUserDataEntity> getAtDateCreate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserDataRepository.findAllByAtCreatedDateAfter(today);
+        return this.tgUserDataRepository.findAllByAdCreatedDateAfter(today);
     }
 
     public List<TgUserDataEntity> getAtDateUpdate() {
         LocalDateTime today = LocalDate.now().atTime(0,0);
-        return this.tgUserDataRepository.findAllByAtModifiedDateAfter(today);
+        return this.tgUserDataRepository.findAllByAdModifiedDateAfter(today);
     }
 
 

@@ -39,8 +39,8 @@ public interface TgUserEmailRepository extends ListCrudRepository<TgUserEmailEnt
     
 
     // Buscar por fecha de creacion antes
-    List<TgUserEmailEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
+    List<TgUserEmailEntity> findAllByAdCreatedDateAfter(LocalDateTime adCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgUserEmailEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
+    List<TgUserEmailEntity> findAllByAdModifiedDateAfter(LocalDateTime adModifiedDate);
 }

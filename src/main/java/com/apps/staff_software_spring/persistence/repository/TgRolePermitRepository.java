@@ -41,8 +41,8 @@ public interface TgRolePermitRepository extends ListCrudRepository<TgRolePermitE
     
 
     // Buscar por fecha de creacion antes
-    List<TgRolePermitEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
+    List<TgRolePermitEntity> findAllByAdCreatedDateAfter(LocalDateTime adCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<TgRolePermitEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
+    List<TgRolePermitEntity> findAllByAdModifiedDateAfter(LocalDateTime adModifiedDate);
 }

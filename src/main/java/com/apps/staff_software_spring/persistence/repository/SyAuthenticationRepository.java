@@ -31,8 +31,8 @@ public interface SyAuthenticationRepository extends ListCrudRepository<SyAuthent
     
 
     // Buscar por fecha de creacion antes
-    List<SyAuthenticationEntity> findAllByAtCreatedDateAfter(LocalDateTime atCreatedDate);
+    List<SyAuthenticationEntity> findAllByAdCreatedDateAfter(LocalDateTime adCreatedDate);
 
     // Buscar por fecha de creacion antes
-    List<SyAuthenticationEntity> findAllByAtModifiedDateAfter(LocalDateTime atModifiedDate);
+    List<SyAuthenticationEntity> findAllByAdModifiedDateAfter(LocalDateTime adModifiedDate);
 }
