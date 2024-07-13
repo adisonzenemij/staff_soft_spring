@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apps.staff_software_spring.service.dto.JwtResponseDto;
 import com.apps.staff_software_spring.service.dto.LoginDto;
 import com.apps.staff_software_spring.util.JwtUtil;
 
@@ -29,7 +30,7 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/header")
     public ResponseEntity<Void> login(@RequestBody LoginDto loginDto) {
         UsernamePasswordAuthenticationToken login = new UsernamePasswordAuthenticationToken(
             loginDto.getCdLogin(), loginDto.getCdPassword()
@@ -43,5 +44,24 @@ public class AuthController {
         String jwt = this.jwtUtil.create(loginDto.getCdLogin());
 
         return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwt).build();
+    }
+
+    @PostMapping(value = "/json")
+    public ResponseEntity<JwtResponseDto> jwt(@RequestBody LoginDto loginDto) {
+        UsernamePasswordAuthenticationToken login = new UsernamePasswordAuthenticationToken(
+            loginDto.getCdLogin(), loginDto.getCdPassword()
+        );
+
+        Authentication authentication = this.authenticationManager.authenticate(login);
+
+        if (!authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String jwt = this.jwtUtil.create(loginDto.getCdLogin());
+
+        JwtResponseDto jwtResponse = new JwtResponseDto(jwt);
+
+        return ResponseEntity.ok(jwtResponse);
     }
 }
