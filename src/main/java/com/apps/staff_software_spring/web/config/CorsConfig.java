@@ -16,6 +16,9 @@ public class CorsConfig {
 
         // Permitir origines desde mi aplicacion
         corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        //corsConfiguration.setAllowedOrigins(Arrays.asList("https://www.adisonjimenez.net"));
+        //corsConfiguration.setAllowedOrigins(Arrays.asList("https://www.adisonjimenez.work"));
+        //corsConfiguration.setAllowedOrigins(Arrays.asList("https://www.engsoft.app"));
         // Permitir metodos http que se consuman desde un origen cruzado
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         // Permitir todos los encabezados a traves de cors

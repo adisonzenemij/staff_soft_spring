@@ -1,10 +1,10 @@
-package com.apps.staff_software_spring.service.dto;
+package com.apps.staff_software_spring.service.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
 @AllArgsConstructor
-public class JwtResponseDto {
+@Data
+public class JwtDto {
     private String token;
 }
