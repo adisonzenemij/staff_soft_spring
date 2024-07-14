@@ -71,6 +71,7 @@ public class SecurityConfig {
             .cors().and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeHttpRequests()
+            .requestMatchers("/pub/**").permitAll()
             .requestMatchers("/api/auth/**").permitAll()
             //.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
             //.requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("ADMIN", "CUSTOMER")
