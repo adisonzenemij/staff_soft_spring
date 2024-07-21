@@ -100,25 +100,25 @@ public class SyAuthenticationController {
     // Obtener todos los registros con paginacion
     @GetMapping(value = "/page/all")
     public ResponseEntity<Page<SyAuthenticationEntity>> pageAll(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int elements
+        @RequestParam(defaultValue = "0") int sheet,
+        @RequestParam(defaultValue = "10") int row
     ) {
         return ResponseEntity.ok(
-            this.syAuthenticationService.pageAll(page, elements)
+            this.syAuthenticationService.pageAll(sheet, row)
         );
     }
 
     // Obtener todos los registros con paginacion y ordenacion
     @GetMapping(value = "/page/sort")
     public ResponseEntity<Page<SyAuthenticationEntity>> pageSortCol(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int elements,
+        @RequestParam(defaultValue = "0") int sheet,
+        @RequestParam(defaultValue = "10") int row,
         @RequestParam(defaultValue = "idRegister") String sortBy,
         @RequestParam(defaultValue = "ASC") String sortDir
     ) {
         return ResponseEntity.ok(
             this.syAuthenticationService.pageSortCol(
-                page, elements, sortBy, sortDir
+                sheet, row, sortBy, sortDir
             )
         );
     }

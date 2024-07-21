@@ -95,25 +95,25 @@ public class TgUserEmailController {
     // Obtener todos los registros con paginacion
     @GetMapping(value = "/page/all")
     public ResponseEntity<Page<TgUserEmailEntity>> pageAll(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int elements
+        @RequestParam(defaultValue = "0") int sheet,
+        @RequestParam(defaultValue = "10") int row
     ) {
         return ResponseEntity.ok(
-            this.tgUserEmailService.pageAll(page, elements)
+            this.tgUserEmailService.pageAll(sheet, row)
         );
     }
 
     // Obtener todos los registros con paginacion y ordenacion
     @GetMapping(value = "/page/sort")
     public ResponseEntity<Page<TgUserEmailEntity>> pageSortCol(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int elements,
+        @RequestParam(defaultValue = "0") int sheet,
+        @RequestParam(defaultValue = "10") int row,
         @RequestParam(defaultValue = "idRegister") String sortBy,
         @RequestParam(defaultValue = "ASC") String sortDir
     ) {
         return ResponseEntity.ok(
             this.tgUserEmailService.pageSortCol(
-                page, elements, sortBy, sortDir
+                sheet, row, sortBy, sortDir
             )
         );
     }
